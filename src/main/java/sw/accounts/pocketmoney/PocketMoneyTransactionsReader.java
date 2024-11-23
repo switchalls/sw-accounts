@@ -6,7 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 
-import sw.accounts.AbstractSummaryReportGenerator;
+import sw.accounts.AbstractReportGenerator;
 import sw.accounts.AccountsException;
 import sw.accounts.Transaction;
 import sw.accounts.io.AbstractTransactionsReader;
@@ -89,7 +89,7 @@ public class PocketMoneyTransactionsReader extends AbstractTransactionsReader {
 		if (!tid.isEmpty()) {
 			if ( Character.isDigit(tid.charAt(0)) ) {
 				t.setCheckNumber( tid );
-				t.setType( PocketMoneySummaryReportGenerator.CHEQUE );
+				t.setType( PocketMoneyReportGenerator.CHEQUE );
 			}
 			else if ( tid.indexOf('#') < 0 ) {
 				t.setType( tid );
@@ -116,7 +116,7 @@ public class PocketMoneyTransactionsReader extends AbstractTransactionsReader {
 				t.setTransferOther( tother );
 			}
 
-			t.setType( PocketMoneySummaryReportGenerator.ELECTRONIC_TRANSFER );			
+			t.setType( PocketMoneyReportGenerator.ELECTRONIC_TRANSFER );
 		}
 
 		return t;
@@ -138,7 +138,7 @@ public class PocketMoneyTransactionsReader extends AbstractTransactionsReader {
 		parent.setAccount( aFirstChild.getAccount() );
 		parent.setDate( aFirstChild.getDate() );
 		parent.setPayee( aFirstChild.getPayee() );
-		parent.setCategory( AbstractSummaryReportGenerator.SPLIT );
+		parent.setCategory( AbstractReportGenerator.SPLIT );
 		parent.setCleared( aFirstChild.isCleared() );
 		parent.setType( aFirstChild.getType() );
 		
@@ -154,11 +154,11 @@ public class PocketMoneyTransactionsReader extends AbstractTransactionsReader {
 			
 			parent.setAmount( parent.getAmount() + t.getAmount() );
 			
-			t.setPayee( AbstractSummaryReportGenerator.SPLIT );
+			t.setPayee( AbstractReportGenerator.SPLIT );
 			t.setType( "" );
 		}
 		
-		aFirstChild.setPayee( AbstractSummaryReportGenerator.SPLIT );
+		aFirstChild.setPayee( AbstractReportGenerator.SPLIT );
 		aFirstChild.setType( "" );
 	}
 

@@ -138,7 +138,7 @@ public class Transaction implements Serializable {
 	}
 
 	public boolean isSplitTransactionChild() {
-		return AbstractSummaryReportGenerator.SPLIT.equals(this.getPayee());
+		return AbstractReportGenerator.SPLIT.equals(this.getPayee());
 	}
 	
 	public String toString() {

@@ -14,7 +14,7 @@ import sw.accounts.io.AccountsReader;
 import sw.accounts.io.AccountsWriter;
 import sw.accounts.io.CategorySummaryGenerator;
 
-public abstract class AbstractSummaryReportGenerator {
+public abstract class AbstractReportGenerator {
 
 	public static final String CHEQUE = "Cheque";
 	public static final String ELECTRONIC_TRANSFER = "Elec Trsf";
