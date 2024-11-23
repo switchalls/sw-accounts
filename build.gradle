@@ -16,11 +16,16 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter"
     implementation "com.google.code.findbugs:jsr305:3.0.2" // for @Nullable
 
-    testImplementation "org.springframework.boot:spring-boot-starter-test"
+    compileOnly 'org.projectlombok:lombok:1.18.36'
+    annotationProcessor 'org.projectlombok:lombok:1.18.36'
 
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
 //    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
 //    testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.11.3")
 //    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.2")
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.36'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.36'
 }
 
 test {

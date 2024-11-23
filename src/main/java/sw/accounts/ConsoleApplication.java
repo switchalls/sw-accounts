@@ -7,13 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import sw.accounts.pocketmoney.PocketMoneyReportGenerator;
 
 @SpringBootApplication
 public class ConsoleApplication implements CommandLineRunner {
 
     @Autowired
-    private PocketMoneyReportGenerator reportGenerator;
+    private ReportGenerator reportGenerator;
 
     public static void main(String[] args) {
         SpringApplication.run( ConsoleApplication.class, args);
@@ -34,6 +33,6 @@ public class ConsoleApplication implements CommandLineRunner {
     }
 
     private void printUsage(PrintStream out) {
-        out.println("Usage: PocketMoneyReportGenerator <accounts.csv> <transactions.csv> <output.csv>");
+        out.println("Usage: ReportGenerator <accounts.csv> <transactions.csv> <output.csv>");
     }
 }

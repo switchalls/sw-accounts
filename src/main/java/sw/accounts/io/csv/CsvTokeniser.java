@@ -1,4 +1,4 @@
-package sw.accounts.io;
+package sw.accounts.io.csv;
 
 import java.io.IOException;
 
@@ -8,7 +8,7 @@ public class CsvTokeniser {
 	private int nextTokenPos;
 	private boolean emptyLastField;
 	
-	public CsvTokeniser(String aContent) throws IOException {
+	public CsvTokeniser(String aContent) {
 		this.content = aContent;
 		this.nextToken();
 	}

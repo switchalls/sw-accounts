@@ -1,56 +1,58 @@
 package sw.accounts;
 
+import sw.accounts.exceptions.AccountsException;
+import sw.accounts.io.AccountsReader;
+import sw.accounts.io.AccountsWriter;
+import sw.accounts.io.CategorySummaryGenerator;
+import sw.accounts.io.TransactionsReader;
+import sw.accounts.models.Account;
+import sw.accounts.models.CategorySummary;
+import sw.accounts.models.Transaction;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.GregorianCalendar;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
-import sw.accounts.io.AccountsReader;
-import sw.accounts.io.AccountsWriter;
-import sw.accounts.io.CategorySummaryGenerator;
+@Component
+@Scope("prototype")
+public class ReportGenerator {
 
-public abstract class AbstractReportGenerator {
-
-	public static final String CHEQUE = "Cheque";
-	public static final String ELECTRONIC_TRANSFER = "Elec Trsf";
-	public static final String SPLIT = "--SPLIT--";
-	
 	protected static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat( "dd/MM/yyyy" );
+
+	private final AccountsReader accountsReader;
+	private final AccountsWriter accountsWriter;
+	private final CategorySummaryGenerator categorySummaryGenerator;
+	private final TransactionsReader transactionsReader;
 
 	private Collection<Account> accounts;
 	private List<Transaction> transactions;
-	
-	public Account getAccount(String aName) throws AccountsException {
-		for ( Account a : this.getAccounts() ) {
-			if ( a.getId().equals(aName) ) {
-				return a;
-			}
-		}
-		throw new AccountsException("Cannot find account: "+aName );
-	}
-	
-	public Collection<Account> getAccounts() throws AccountsException {
-		if ( this.accounts == null ) {
-			throw new AccountsException( "Accounts not loaded" );
-		}
-		return this.accounts;
+
+	@Autowired
+	public ReportGenerator(
+			AccountsReader accountsReader,
+			AccountsWriter accountsWriter,
+			CategorySummaryGenerator categorySummaryGenerator,
+			TransactionsReader transactionsReader
+	) {
+		this.accountsReader = accountsReader;
+		this.accountsWriter = accountsWriter;
+		this.categorySummaryGenerator = categorySummaryGenerator;
+		this.transactionsReader = transactionsReader;
 	}
 
 	public void loadAccounts(File aAccountsFile) throws Exception {
-		final AccountsReader reader = new AccountsReader();
-		reader.loadAccounts( aAccountsFile );
-
-		this.accounts = reader.getAccounts();
+		this.accounts = this.accountsReader.loadAccounts( aAccountsFile );
 	}
 
 	public void persistAccounts(File aAccountsFile) throws Exception {
-		final AccountsWriter writer = new AccountsWriter();
-		writer.writeFile( aAccountsFile, this.getAccounts() );
+		this.accountsWriter.writeFile( aAccountsFile, this.getAccounts() );
 	}
 
 	public void updateAccounts() throws AccountsException {
@@ -61,13 +63,6 @@ public abstract class AbstractReportGenerator {
 				}
 			}
 		}
-	}
-
-	public Collection<Transaction> getTransactions() throws AccountsException {
-		if ( this.transactions == null ) {
-			throw new AccountsException( "Transactions not loaded" );
-		}
-		return this.transactions;
 	}
 
 	public void loadTransactions(File aTransactionsFile) throws Exception {
@@ -83,18 +78,12 @@ public abstract class AbstractReportGenerator {
 		endDate.roll( Calendar.MONTH, 1 );
 		endDate.roll( Calendar.DAY_OF_YEAR, -1 );
 		
-		this.transactions = this.loadTransactions(
-			aTransactionsFile, startDate, endDate
+		this.transactions = transactionsReader.loadTransactions(
+				startDate, endDate, aTransactionsFile
 		);
 
 		this.setTransactionTypes();
 	}
-
-	public abstract List<Transaction> loadTransactions(
-			File aTransactionsFile,
-			Calendar aStartDate,
-			Calendar aEndDate)
-	throws	Exception;
 	
 	public void generateSummaryReport(File aOutFile) throws AccountsException, IOException {
         try (PrintWriter writer = new PrintWriter(aOutFile)) {
@@ -138,10 +127,10 @@ public abstract class AbstractReportGenerator {
             writer.println("Summary");
 
             final List<CategorySummary> summaries = this.listCategorySummaries();
-            summaries.sort((aSummary, aOther) -> aSummary.getCategory().compareTo(aOther.getCategory()));
+            summaries.sort(Comparator.comparing(CategorySummary::getCategory));
 
             for (CategorySummary s : summaries) {
-                if (!SPLIT.equals(s.getCategory()) && !"".equals(s.getCategory())) {
+                if (!Transaction.SPLIT.equals(s.getCategory()) && !"".equals(s.getCategory())) {
                     writer.print(",");
                     writer.print(",");
                     writer.print(s.getCategory());
@@ -151,8 +140,29 @@ public abstract class AbstractReportGenerator {
             }
         }
 	}
-	
-	protected Calendar createReportDate() {
+
+	private Collection<Account> getAccounts() throws AccountsException {
+		if ( this.accounts == null ) {
+			throw new AccountsException( "Accounts not loaded" );
+		}
+		return this.accounts;
+	}
+
+	private Account getAccount(String aName) throws AccountsException {
+		return this.accounts.stream()
+				.filter((a) -> a.getId().equals(aName))
+				.findFirst()
+				.orElseThrow( () -> new AccountsException("Cannot find account: "+aName ));
+	}
+
+	private Collection<Transaction> getTransactions() throws AccountsException {
+		if ( this.transactions == null ) {
+			throw new AccountsException( "Transactions not loaded" );
+		}
+		return this.transactions;
+	}
+
+	private Calendar createReportDate() {
 		Calendar c = GregorianCalendar.getInstance();
 		c.set( Calendar.DAY_OF_MONTH, 1 );
 		c.set( Calendar.HOUR_OF_DAY, 0 );
@@ -169,24 +179,17 @@ public abstract class AbstractReportGenerator {
 		return c;
 	}
 
-	protected List<CategorySummary> listCategorySummaries() throws AccountsException {
-		final CategorySummaryGenerator generator = new CategorySummaryGenerator();
-		generator.addTransactions( this.getTransactions() );
-
-		return generator.getSummaries();
+	private List<CategorySummary> listCategorySummaries() throws AccountsException {
+		return this.categorySummaryGenerator.addTransactions( this.getTransactions() );
 	}
 
-	protected Collection<Transaction> listTransactionsByAccount(String aAccount) throws AccountsException {
-		final Collection<Transaction> tlist = new ArrayList<>();
-		for ( Transaction t : this.getTransactions() ) {
-			if ( aAccount.equals(t.getAccount()) ) {
-				tlist.add( t );
-			}
-		}
-		return tlist;
+	private Collection<Transaction> listTransactionsByAccount(String aAccount) {
+		return this.transactions.stream()
+				.filter((t) -> aAccount.equals(t.getAccount()))
+				.collect(Collectors.toList());
 	}
 
-	protected void setTransactionTypes() throws AccountsException {
+	private void setTransactionTypes() throws AccountsException {
 		for ( Transaction t : this.getTransactions() ) {
 			if ( "".equals(t.getType()) && !t.isSplitTransactionChild() ) {
 				final Account a = this.getAccount( t.getAccount() );

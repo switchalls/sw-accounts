@@ -1,5 +1,8 @@
 package sw.accounts.io;
 
+import org.springframework.stereotype.Component;
+import sw.accounts.models.Account;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -7,15 +10,14 @@ import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.util.Collection;
 
-import sw.accounts.Account;
-
+@Component
 public class AccountsWriter
 {
 	public void writeFile(File aPath, Collection<Account> aAccounts) throws IOException {
 		this.writeFile(Files.newOutputStream(aPath.toPath()), aAccounts );
 	}
 
-	public void writeFile(OutputStream aOut, Collection<Account> aAccounts) {
+	private void writeFile(OutputStream aOut, Collection<Account> aAccounts) {
 		final PrintWriter writer = new PrintWriter( aOut );
 		for ( Account a : aAccounts ) {
 			writer.print( a.getId() );

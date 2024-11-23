@@ -1,46 +1,46 @@
 package sw.accounts.io;
 
+import sw.accounts.models.CategorySummary;
+import sw.accounts.models.Transaction;
+
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import sw.accounts.CategorySummary;
-import sw.accounts.Transaction;
-
+@Component
 public class CategorySummaryGenerator {
 
-	private final List<CategorySummary> summaries = new ArrayList<>();
-	
-	public List<CategorySummary> getSummaries()
-	{
-		return this.summaries;
-	}
+	public List<CategorySummary> addTransactions(Collection<Transaction> aTransactions) {
+		final List<CategorySummary> summaries = new ArrayList<>();
 
-	public void addTransactions(Collection<Transaction> aTransactions) {
 		for ( Transaction t : aTransactions ) {
 			String c = t.getCategory();
 			while ( c != null ) {
-				CategorySummary s = this.findSummary( c );
+				CategorySummary s = this.findSummary( summaries, c );
 				if ( s == null ) {
-					s = new CategorySummary();
-					s.setCategory( c );
-					this.summaries.add( s );
+					s = CategorySummary.builder()
+							.category( c )
+							.build();
+
+					summaries.add( s );
 				}
 				
-				s.add( t );
+				s.addToTotal( t );
 				
 				c = s.getParentCategory();
 			}
 		}
+
+		return summaries;
 	}
 
-	public CategorySummary findSummary(String aCategory) {
-		for ( CategorySummary s : this.summaries ) {
-			if ( s.getCategory().equals(aCategory) ) {
-				return s;
-			}
-		}
-		return null;
+	private CategorySummary findSummary(List<CategorySummary> summaries, String aCategory) {
+		return summaries.stream()
+				.filter((s) -> s.getCategory().equals(aCategory))
+				.findFirst()
+				.orElse(null);
 	}
 
 }

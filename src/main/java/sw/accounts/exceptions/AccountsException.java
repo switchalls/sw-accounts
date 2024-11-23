@@ -1,8 +1,6 @@
-package sw.accounts;
+package sw.accounts.exceptions;
 
 public class AccountsException extends Exception {
-
-	private static final long serialVersionUID = 3139053184959882077L;
 
 	public AccountsException(String aMsg)
 	{
