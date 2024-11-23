@@ -1,0 +1,5 @@
+"Account","Date","ChkNum","Payee","Category","Class","Memo","Amount","Cleared","CurrencyCode","ExchangeRate","Balance"
+"Firstdirect","01/09/2024","","<CashBack Card>","","","","-750.00","*","GBP","1.0","28,201.27"
+"CashBack Card","01/09/2024","","<Firstdirect>","","","","750.00","*","GBP","1.0","28,951.27"
+"Firstdirect","28/09/2024","","<Goldfish>","","","","-2,528.63","*","GBP","1.0","28,401.16"
+"Goldfish","28/09/2024","","<Firstdirect>","","","","2,528.63","*","GBP","1.0","30,929.79"

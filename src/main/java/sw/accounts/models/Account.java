@@ -1,11 +1,11 @@
 package sw.accounts.models;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Builder(toBuilder = true)
+@EqualsAndHashCode
+@ToString
 public class Account {
 
     @Setter

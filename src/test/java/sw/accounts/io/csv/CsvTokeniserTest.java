@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 
 public class CsvTokeniserTest
 {
-	public static final String[] POCKET_MONEY_TOKENS = new String[] {
+	public static final String[] EXPECTED_TOKENS = new String[] {
 		"Account", "Date", "ChkNum", "Payee", "Category", "Class", "Memo", "Amount", "Cleared",
 		"Barclays", "01/12/2009", "", "Morrisons", "Car:Petrol", "", "", "-88", "",
 		"Barclays", "02/12/2009", "", "<Firstdirect>", "", "", "", "-2", "",
@@ -42,8 +42,8 @@ public class CsvTokeniserTest
             while ((s = reader.readLine()) != null) {
                 final CsvTokeniser tokeniser = new CsvTokeniser(s);
                 for (; tokeniser.hasMoreTokens(); tokenPos++) {
-                    assertTrue(tokenPos < POCKET_MONEY_TOKENS.length);
-                    assertEquals(POCKET_MONEY_TOKENS[tokenPos], tokeniser.nextToken());
+                    assertTrue(tokenPos < EXPECTED_TOKENS.length);
+                    assertEquals(EXPECTED_TOKENS[tokenPos], tokeniser.nextToken());
                 }
             }
         }

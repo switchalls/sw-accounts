@@ -12,19 +12,19 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 @Component
 public class AccountsReader {
 
-    public Collection<Account> loadAccounts(File aPath) throws AccountsException, IOException {
+    public List<Account> loadAccounts(File aPath) throws AccountsException, IOException {
         try (InputStream in = Files.newInputStream(aPath.toPath())) {
             return this.loadAccounts(in);
         }
 	}
 
-	private Collection<Account> loadAccounts(InputStream aIn) throws AccountsException, IOException {
-		final Collection<Account> newAccounts = new ArrayList<>();
+	private List<Account> loadAccounts(InputStream aIn) throws AccountsException, IOException {
+		final List<Account> newAccounts = new ArrayList<>();
 
 		final BufferedReader reader = new BufferedReader( new InputStreamReader(aIn) );
 		String s;

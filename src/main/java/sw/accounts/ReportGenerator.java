@@ -31,7 +31,7 @@ public class ReportGenerator {
 	private final CategorySummaryGenerator categorySummaryGenerator;
 	private final TransactionsReader transactionsReader;
 
-	private Collection<Account> accounts;
+	private List<Account> accounts;
 	private List<Transaction> transactions;
 
 	@Autowired
@@ -45,6 +45,20 @@ public class ReportGenerator {
 		this.accountsWriter = accountsWriter;
 		this.categorySummaryGenerator = categorySummaryGenerator;
 		this.transactionsReader = transactionsReader;
+	}
+
+	public List<Account> getAccounts() throws AccountsException {
+		if ( this.accounts == null ) {
+			throw new AccountsException( "Accounts not loaded" );
+		}
+		return this.accounts;
+	}
+
+	public List<Transaction> getTransactions() throws AccountsException {
+		if ( this.transactions == null ) {
+			throw new AccountsException( "Transactions not loaded" );
+		}
+		return this.transactions;
 	}
 
 	public void loadAccounts(File aAccountsFile) throws Exception {
@@ -65,26 +79,14 @@ public class ReportGenerator {
 		}
 	}
 
-	public void loadTransactions(File aTransactionsFile) throws Exception {
-		final Calendar startDate = this.createReportDate();
-
-		final Calendar endDate = this.createReportDate();
-		endDate.set( Calendar.HOUR_OF_DAY, 23 );
-		endDate.set( Calendar.MINUTE, 59 );
-		endDate.set( Calendar.SECOND, 59 );
-		
-		// "discover" last day-in-month by subtracting 1 day from
-		// first day in next month
-		endDate.roll( Calendar.MONTH, 1 );
-		endDate.roll( Calendar.DAY_OF_YEAR, -1 );
-		
+	public void loadTransactions(Calendar startDate, Calendar endDate, File aTransactionsFile) throws Exception {
 		this.transactions = transactionsReader.loadTransactions(
-				startDate, endDate, aTransactionsFile
+			startDate, endDate, aTransactionsFile
 		);
 
 		this.setTransactionTypes();
 	}
-	
+
 	public void generateSummaryReport(File aOutFile) throws AccountsException, IOException {
         try (PrintWriter writer = new PrintWriter(aOutFile)) {
             for (Account a : this.getAccounts()) {
@@ -141,42 +143,11 @@ public class ReportGenerator {
         }
 	}
 
-	private Collection<Account> getAccounts() throws AccountsException {
-		if ( this.accounts == null ) {
-			throw new AccountsException( "Accounts not loaded" );
-		}
-		return this.accounts;
-	}
-
 	private Account getAccount(String aName) throws AccountsException {
 		return this.accounts.stream()
 				.filter((a) -> a.getId().equals(aName))
 				.findFirst()
 				.orElseThrow( () -> new AccountsException("Cannot find account: "+aName ));
-	}
-
-	private Collection<Transaction> getTransactions() throws AccountsException {
-		if ( this.transactions == null ) {
-			throw new AccountsException( "Transactions not loaded" );
-		}
-		return this.transactions;
-	}
-
-	private Calendar createReportDate() {
-		Calendar c = GregorianCalendar.getInstance();
-		c.set( Calendar.DAY_OF_MONTH, 1 );
-		c.set( Calendar.HOUR_OF_DAY, 0 );
-		c.set( Calendar.MINUTE, 0 );
-		c.set( Calendar.SECOND, 0 );
-		c.set( Calendar.MILLISECOND, 0 );
-		
-		c.roll( Calendar.MONTH, -1 );
-		
-		if ( c.get(Calendar.MONTH) == Calendar.DECEMBER ) {
-			c.roll( Calendar.YEAR, -1 );
-		}
-		
-		return c;
 	}
 
 	private List<CategorySummary> listCategorySummaries() throws AccountsException {

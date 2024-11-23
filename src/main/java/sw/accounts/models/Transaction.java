@@ -1,13 +1,13 @@
 package sw.accounts.models;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Date;
 
 @Getter
 @Builder(toBuilder = true)
+@EqualsAndHashCode
+@ToString
 public class Transaction {
 
     public static final String CHEQUE = "Cheque";
