@@ -1,0 +1,23 @@
+plugins {
+    id "java"
+}
+
+group "sw.learning"
+version "0.0.1-SNAPSHOT"
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "com.google.code.findbugs:jsr305:3.0.2" // for @Nullable
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.11.3")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
+}
+
+test {
+    useJUnitPlatform()
+}

@@ -1,0 +1,9 @@
+Account,Date,ChkNum,Payee,Category,Class,Memo,Amount,Cleared
+"Barclays",01/12/2009,,Morrisons,Car:Petrol,,,-88,
+Barclays,02/12/2009,,<Firstdirect>,,,,-2,
+Firstdirect,02/12/2009,,<Barclays>,,,,2,
+Barclays,"13/12/2009",,Sharon Witchalls,Sharon:Cash,,,-123,
+Barclays,31/12/2009,,Sainsburys,Car:Petrol,,"Hello ""mummy""",-3,*
+Barclays,31/12/2009,,Sainsburys,Car:Repair,"","",-4,*
+Barclays,30/11/2009,,Sainsburys,Car:Repair,,,-4,""
+Barclays,01/01/2010,,Sharon Witchalls,Sharon:Cash,,,-123,
