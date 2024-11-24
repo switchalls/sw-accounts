@@ -23,20 +23,17 @@ import java.util.*;
 @ExtendWith(MockitoExtension.class)
 public class ReportGeneratorTest
 {
-	private static final Account EXPECTED_BARCLAYS_FOR_SEPTEMBER = Account.builder()
-			.balance(1480.8802F)
+	private static final Account BARCLAYS_ACCOUNT = Account.builder()
 			.id("Barclays")
 			.defaultTransactionType("Visa")
 			.build();
 
-	private static final Account EXPECTED_FIRSTDIRECT_FOR_SEPTEMBER = Account.builder()
-			.balance(4460.4F)
+	private static final Account FIRSTDIRECT_ACCOUNT = Account.builder()
 			.id("Firstdirect")
 			.defaultTransactionType("")
 			.build();
 
-	private static final Account EXPECTED_GOLDFISH_FOR_SEPTEMBER = Account.builder()
-			.balance(-15.980183F)
+	private static final Account GOLDFISH_ACCOUNT = Account.builder()
 			.id("Goldfish")
 			.defaultTransactionType("Mastercard")
 			.build();
@@ -61,18 +58,36 @@ public class ReportGeneratorTest
 	}
 
 	@Test
-	void shouldUpdateAccounts() throws Exception {
-		testSubject.loadAccounts( aResource("AccountTotals_2024_08.csv") );
-		testSubject.loadTransactions( aDateForFirstOfSeptember(), aDateForEndOfSeptember(), aResource("Transactions_2024_09.csv") );
+	void shouldUpdateAccountsForSeptember() throws Exception {
+		testSubject.loadAccounts( aResource("AccountTotals_2024_09.csv") );
+		testSubject.loadTransactions( aFirstDayOf(9), aLastDayOf(9), aResource("Transactions_2024_09.csv") );
 		testSubject.updateAccounts();
 
 		final List<Account> accounts = testSubject.getAccounts();
-		assertEquals(EXPECTED_BARCLAYS_FOR_SEPTEMBER, accounts.get(0) );
-		assertEquals(EXPECTED_FIRSTDIRECT_FOR_SEPTEMBER, accounts.get(1) );
-		assertEquals(EXPECTED_GOLDFISH_FOR_SEPTEMBER, accounts.get(2) );
+		assertEquals( aBalanceOf(BARCLAYS_ACCOUNT, 1480.8802F), accounts.get(0) );
+		assertEquals( aBalanceOf(FIRSTDIRECT_ACCOUNT, 4460.4F), accounts.get(1) );
+		assertEquals( aBalanceOf(GOLDFISH_ACCOUNT, -15.980183F), accounts.get(2) );
 	}
 
-	private Calendar aDateForFirstOfSeptember() {
+	@Test
+	void shouldUpdateAccountsForOctober() throws Exception {
+		testSubject.loadAccounts( aResource("AccountTotals_2024_10.csv") );
+		testSubject.loadTransactions( aFirstDayOf(10), aLastDayOf(10), aResource("Transactions_2024_10.csv") );
+		testSubject.updateAccounts();
+
+		final List<Account> accounts = testSubject.getAccounts();
+		assertEquals( aBalanceOf(BARCLAYS_ACCOUNT, 1514.2194F), accounts.get(0) );
+		assertEquals( aBalanceOf(FIRSTDIRECT_ACCOUNT, 4633.0703F), accounts.get(1) );
+		assertEquals( aBalanceOf(GOLDFISH_ACCOUNT, 23.71464F), accounts.get(2) );
+	}
+
+	private Account aBalanceOf(Account account, float expected) {
+		return account.toBuilder()
+				.balance(expected)
+				.build();
+	}
+
+	private Calendar aFirstDayOf(int month) {
 		final Calendar startDate = GregorianCalendar.getInstance();
 		startDate.set( Calendar.DAY_OF_MONTH, 1 );
 		startDate.set( Calendar.HOUR_OF_DAY, 0 );
@@ -80,14 +95,14 @@ public class ReportGeneratorTest
 		startDate.set( Calendar.SECOND, 0 );
 		startDate.set( Calendar.MILLISECOND, 0 );
 
-		startDate.set( Calendar.MONTH, 8 );
+		startDate.set( Calendar.MONTH, month - 1 );
 		startDate.set( Calendar.YEAR, 2024 );
 
 		return startDate;
 	}
 
-	private Calendar aDateForEndOfSeptember() {
-		final Calendar endDate = this.aDateForFirstOfSeptember();
+	private Calendar aLastDayOf(int month) {
+		final Calendar endDate = this.aFirstDayOf(month);
 		endDate.set( Calendar.HOUR_OF_DAY, 23 );
 		endDate.set( Calendar.MINUTE, 59 );
 		endDate.set( Calendar.SECOND, 59 );

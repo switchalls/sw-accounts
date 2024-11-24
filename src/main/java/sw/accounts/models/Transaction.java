@@ -15,25 +15,19 @@ public class Transaction {
     public static final String SPLIT = "--SPLIT--";
 
     @Setter
-    private String account;
-
-    @Setter
     private float amount;
-
-    @Setter
-    private String clazz;
-
-    @Setter
-    private String payee;
 
     @Setter
     private String type;
 
+    private String account;
     private String category;
+    private String clazz;
     private String checkNumber;
     private boolean cleared;
     private Date date;
     private String memo;
+    private String payee;
     private String transferOther;
 
     public boolean isSplit() {
@@ -48,8 +42,8 @@ public class Transaction {
     }
 
     public void setAsSplit() {
-        this.setPayee( Transaction.SPLIT );
-        this.setClazz( "" );
-        this.setType( "" );
+        this.payee = Transaction.SPLIT;
+        this.clazz = "";
+        this.type = "";
     }
 }
