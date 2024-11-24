@@ -44,6 +44,9 @@ public class ReportGeneratorTest
 	@Mock
 	private AccountsWriter mockAccountsWriter;
 
+	@Mock
+	private SummaryReportWriter mockSummaryReportWriter;
+
 	private ReportGenerator testSubject;
 
 	@BeforeEach
@@ -54,7 +57,7 @@ public class ReportGeneratorTest
 
 		final TransactionsReader transactionsReader = new PocketMoneyTransactionsReader();
 
-		testSubject = new ReportGenerator(accountsReader, mockAccountsWriter, categorySummaryGenerator, transactionsReader );
+		testSubject = new ReportGenerator(accountsReader, mockAccountsWriter, categorySummaryGenerator, mockSummaryReportWriter, transactionsReader );
 	}
 
 	@Test
