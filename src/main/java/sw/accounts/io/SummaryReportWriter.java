@@ -5,6 +5,7 @@ import sw.accounts.models.CategorySummary;
 import sw.accounts.models.Transaction;
 
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,6 +13,7 @@ import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,16 +33,17 @@ public class SummaryReportWriter {
             for (Account a : accounts) {
                 writer.print(a.getId());
                 writer.print(",");
-                writer.println(a.getBalance());
+                this.printFloat( writer, a.getBalance() );
+                writer.println();
 
                 final Collection<Transaction> tlist = this.getTransactionsForAccount(a, transactions);
                 for (Transaction t : tlist) {
                     writer.print(",");
                     writer.print(",");
-                    writer.print(DATE_FORMAT.format(t.getDate()));
+                    this.printDate( writer, t.getDate() );
                     writer.print(",");
 
-                    if (!t.getCheckNumber().isEmpty()) {
+                    if (StringUtils.hasLength(t.getCheckNumber())) {
                         writer.print(t.getCheckNumber());
                         writer.print(": ");
                     }
@@ -49,16 +52,24 @@ public class SummaryReportWriter {
                     writer.print(",");
                     writer.print(t.getCategory());
                     writer.print(",");
-                    writer.print( String.format("%.2f", t.getAmount()) );
+                    this.printFloat( writer, t.getAmount() );
                     writer.print(",");
-                    writer.print(t.getType());
+                    this.printString( writer, t.getType() );
                     writer.print(",");
-                    writer.print(t.getTransferOther());
+                    this.printString( writer, t.getTransferOther() );
                     writer.print(",");
-                    writer.print(t.isCleared() ? "Yes" : "No");
-                    writer.print(",\"");
-                    writer.print(t.getMemo());
-                    writer.println("\"");
+
+                    if (!t.isSplit()) {
+                        writer.print(t.isCleared() ? "Yes" : "No");
+                    }
+
+                    writer.print(",");
+
+                    if (StringUtils.hasLength(t.getMemo())) {
+                        writer.print("\"" + t.getMemo() + "\"");
+                    }
+
+                    writer.println();
                 }
 
                 writer.println();
@@ -70,12 +81,13 @@ public class SummaryReportWriter {
             categorySummaries.sort(Comparator.comparing(CategorySummary::getCategory));
 
             for (CategorySummary s : categorySummaries) {
-                if (!Transaction.SPLIT.equals(s.getCategory()) && !"".equals(s.getCategory())) {
+                if (StringUtils.hasLength(s.getCategory()) && !Transaction.SPLIT.equals(s.getCategory())) {
                     writer.print(",");
                     writer.print(",");
                     writer.print(s.getCategory());
                     writer.print(",");
-                    writer.println(s.getTotal());
+                    this.printFloat( writer, s.getTotal() );
+                    writer.println();
                 }
             }
         }
@@ -85,5 +97,19 @@ public class SummaryReportWriter {
         return transactions.stream()
                 .filter((t) -> aAccount.getId().equals(t.getAccount()))
                 .collect(Collectors.toList());
+    }
+
+    private void printDate(PrintWriter writer, Date value) {
+        writer.print(  DATE_FORMAT.format(value) );
+    }
+
+    private void printFloat(PrintWriter writer, float value) {
+        writer.print( String.format("%.2f", value) );
+    }
+
+    private void printString(PrintWriter writer, String value) {
+        if (StringUtils.hasLength(value)) {
+            writer.print(value);
+        }
     }
 }

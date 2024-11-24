@@ -23,7 +23,7 @@ public class AccountsWriter
 		for ( Account a : aAccounts ) {
 			writer.print( a.getId() );
 			writer.print( "," );
-			writer.print( String.format("%.2f", a.getBalance()) );
+			this.printFloat( writer, a.getBalance() );
 			writer.print( "," );
 			writer.println( a.getDefaultTransactionType() );
 		}
@@ -31,4 +31,7 @@ public class AccountsWriter
 		writer.close();
 	}
 
+	private void printFloat(PrintWriter writer, float amount) {
+		writer.print( String.format("%.2f", amount) );
+	}
 }
