@@ -24,7 +24,7 @@ import java.util.*;
 public class ReportGeneratorTest
 {
 	private static final Account EXPECTED_BARCLAYS_FOR_SEPTEMBER = Account.builder()
-			.balance(1480.8804F)
+			.balance(1480.8802F)
 			.id("Barclays")
 			.defaultTransactionType("Visa")
 			.build();

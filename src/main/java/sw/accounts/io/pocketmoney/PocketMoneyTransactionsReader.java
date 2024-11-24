@@ -33,43 +33,47 @@ public class PocketMoneyTransactionsReader implements TransactionsReader {
         reader.readLine();
 
 		// read transactions
-		
+
+		Transaction splitParent = null;
 		Transaction previous = null;
-		boolean inSplit = false;
 		int lineCount = 1;
 
 		String s;
 		while ( (s = reader.readLine()) != null ) {
 			lineCount++;
-			
+
 			try {
 				final Transaction t = this.addTransaction( startDate, endDate, s );
 
 				if ( t != null ) {
-					newTransactions.add( t );
-				}
-				
-				if ( previous != null ) {
-					if ( (t != null) && previous.isSplitTransaction(t) ) {
-						inSplit = true;
-					}
-					else if ( inSplit ) {
-						this.insertSplitTransactionParent( newTransactions, previous );
-						inSplit = false;
-					}
-				}
+					if ( splitParent != null ) {
+						if ( t.isSplitOf(splitParent) ) {
+							splitParent.setAmount( splitParent.getAmount() + t.getAmount() );
+							t.setAsSplit();
+						} else {
+							splitParent = null;
+						}
+					} else if ( t.isSplitOf(previous)) {
+						splitParent = previous.toBuilder()
+								.amount( previous.getAmount() + t.getAmount() )
+								.category( Transaction.SPLIT )
+								.memo("")
+								.build();
 
-				if ( t != null ) {
+						newTransactions.add( newTransactions.size() - 1, splitParent );
+
+						previous.setAsSplit();
+						t.setAsSplit();
+					}
+
+					newTransactions.add( t );
+
 					previous = t;
 				}
 			}
 			catch (Exception e) {
 				throw new AccountsException( "Cannot load pocket-money file: Error at line: "+lineCount, e );
 			}
-		}
-		
-		if ( inSplit ) {
-			this.insertSplitTransactionParent( newTransactions, previous );
 		}
 
 		return newTransactions;
@@ -160,47 +164,6 @@ public class PocketMoneyTransactionsReader implements TransactionsReader {
 		}
 
 		return builder.build();
-	}
-
-	private void insertSplitTransactionParent(List<Transaction> transactions, Transaction aFirstChild) {
-		// find first child
-		
-		int tpos = transactions.size() - 1;
-		for (;  tpos >= 0;  tpos--) {
-			if ( transactions.get(tpos) == aFirstChild ) {
-				break;
-			}
-		}
-		
-		// add split transaction parent
-		
-		final Transaction parent = Transaction.builder()
-				.account( aFirstChild.getAccount() )
-				.date( aFirstChild.getDate() )
-				.payee( aFirstChild.getPayee() )
-				.category( Transaction.SPLIT )
-				.cleared( aFirstChild.isCleared() )
-				.type( aFirstChild.getType() )
-				.build();
-
-		transactions.add( tpos-1, parent );
-
-		// update split transaction children
-		
-		for (;  tpos < transactions.size();  tpos++) {
-			final Transaction t = transactions.get(tpos);
-			if ( !t.isSplitTransaction(aFirstChild) ) {
-				break;
-			}
-			
-			parent.setAmount( parent.getAmount() + t.getAmount() );
-			
-			t.setPayee( Transaction.SPLIT );
-			t.setType( "" );
-		}
-		
-		aFirstChild.setPayee( Transaction.SPLIT );
-		aFirstChild.setType( "" );
 	}
 
 }

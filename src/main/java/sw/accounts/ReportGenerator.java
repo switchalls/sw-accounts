@@ -72,7 +72,7 @@ public class ReportGenerator {
 	public void updateAccounts() throws AccountsException {
 		for ( Account a : this.getAccounts() ) {
 			for ( Transaction t : this.listTransactionsByAccount(a.getId()) ) {
-				if ( !t.isSplitTransactionChild() ) {
+				if ( !t.isSplit() ) {
 					a.setBalance( a.getBalance() + t.getAmount() );
 				}
 			}
@@ -162,7 +162,7 @@ public class ReportGenerator {
 
 	private void setTransactionTypes() throws AccountsException {
 		for ( Transaction t : this.getTransactions() ) {
-			if ( "".equals(t.getType()) && !t.isSplitTransactionChild() ) {
+			if ( "".equals(t.getType()) && !t.isSplit() ) {
 				final Account a = this.getAccount( t.getAccount() );
 				t.setType( a.getDefaultTransactionType() );
 			}

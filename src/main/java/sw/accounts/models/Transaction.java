@@ -21,6 +21,9 @@ public class Transaction {
     private float amount;
 
     @Setter
+    private String clazz;
+
+    @Setter
     private String payee;
 
     @Setter
@@ -28,19 +31,25 @@ public class Transaction {
 
     private String category;
     private String checkNumber;
-    private String clazz;
     private boolean cleared;
     private Date date;
     private String memo;
     private String transferOther;
 
-    public boolean isSplitTransaction(Transaction aOther) {
-        return this.getAccount().equals(aOther.getAccount())
+    public boolean isSplit() {
+        return SPLIT.equals(this.getPayee());
+    }
+
+    public boolean isSplitOf(Transaction aOther) {
+        return aOther != null
+                && this.getAccount().equals(aOther.getAccount())
                 && this.getDate().equals(aOther.getDate())
                 && this.getPayee().equals(aOther.getPayee());
     }
 
-    public boolean isSplitTransactionChild() {
-        return SPLIT.equals(this.getPayee());
+    public void setAsSplit() {
+        this.setPayee( Transaction.SPLIT );
+        this.setClazz( "" );
+        this.setType( "" );
     }
 }

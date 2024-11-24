@@ -1,6 +1,6 @@
 "Account","Date","ChkNum","Payee","Category","Class","Memo","Amount","Cleared","CurrencyCode","ExchangeRate","Balance"
-"Barclays","24/09/2024","Direct Debit","ID Mobile","Children:Phone","","Eirwen ","-6.00","*","GBP","1.0","25,528.17"
-"Barclays","24/09/2024","Direct Debit","ID Mobile","Children:Phone","","Olen","-17.99","*","GBP","1.0","25,510.18"
+"Barclays","24/09/2024","Direct Debit","ID Mobile","Children:Phone","Direct Debit","Eirwen","-6.00","*","GBP","1.0","25,528.17"
+"Barclays","24/09/2024","Direct Debit","ID Mobile","Children:Phone","Direct Debit","Olen","-17.99","*","GBP","1.0","25,510.18"
 "Barclays","24/09/2024","Direct Debit","ID Mobile","Personal:Phone","","Final payment","-1.05","*","GBP","1.0","25,509.13"
 "Barclays","30/09/2024","Direct Debit","Utility Warehouse","House:Bills","Direct Debit","Gas","-105.86","","GBP","1.0","30,502.81"
 "Barclays","30/09/2024","Direct Debit","Utility Warehouse","House:Bills","Direct Debit","Electric","-121.95","","GBP","1.0","30,380.86"
