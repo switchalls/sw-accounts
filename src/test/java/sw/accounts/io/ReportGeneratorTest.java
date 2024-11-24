@@ -9,6 +9,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import sw.accounts.CategorySummaryGenerator;
 import sw.accounts.ReportGenerator;
 import sw.accounts.io.pocketmoney.PocketMoneyTransactionsReader;
 import sw.accounts.models.Account;

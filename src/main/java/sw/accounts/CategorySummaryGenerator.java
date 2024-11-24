@@ -1,4 +1,4 @@
-package sw.accounts.io;
+package sw.accounts;
 
 import sw.accounts.models.CategorySummary;
 import sw.accounts.models.Transaction;
