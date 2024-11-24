@@ -33,7 +33,7 @@ public class SummaryReportWriter {
                 writer.print(",");
                 writer.println(a.getBalance());
 
-                final Collection<Transaction> tlist = this.getTransactionsForAccount(a.getId(), transactions);
+                final Collection<Transaction> tlist = this.getTransactionsForAccount(a, transactions);
                 for (Transaction t : tlist) {
                     writer.print(",");
                     writer.print(",");
@@ -49,7 +49,7 @@ public class SummaryReportWriter {
                     writer.print(",");
                     writer.print(t.getCategory());
                     writer.print(",");
-                    writer.print(t.getAmount());
+                    writer.print( String.format("%.2f", t.getAmount()) );
                     writer.print(",");
                     writer.print(t.getType());
                     writer.print(",");
@@ -81,9 +81,9 @@ public class SummaryReportWriter {
         }
     }
 
-    private Collection<Transaction> getTransactionsForAccount(String aAccount, List<Transaction> transactions) {
+    private Collection<Transaction> getTransactionsForAccount(Account aAccount, List<Transaction> transactions) {
         return transactions.stream()
-                .filter((t) -> aAccount.equals(t.getAccount()))
+                .filter((t) -> aAccount.getId().equals(t.getAccount()))
                 .collect(Collectors.toList());
     }
 }

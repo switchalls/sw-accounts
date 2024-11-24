@@ -60,7 +60,7 @@ public class ReportGenerator {
 
 	public void updateAccounts() throws AccountsException {
 		for ( Account a : this.getAccounts() ) {
-			for ( Transaction t : this.getTransactionsForAccount(a.getId()) ) {
+			for ( Transaction t : this.getTransactionsForAccount(a) ) {
 				if ( !t.isSplit() ) {
 					a.setBalance( a.getBalance() + t.getAmount() );
 				}
@@ -98,9 +98,9 @@ public class ReportGenerator {
 		return this.categorySummaryGenerator.addTransactions( this.getTransactions() );
 	}
 
-	private Collection<Transaction> getTransactionsForAccount(String aAccount) {
+	private Collection<Transaction> getTransactionsForAccount(Account aAccount) {
 		return this.transactions.stream()
-				.filter((t) -> aAccount.equals(t.getAccount()))
+				.filter((t) -> aAccount.getId().equals(t.getAccount()))
 				.collect(Collectors.toList());
 	}
 

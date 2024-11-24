@@ -1,7 +1,8 @@
 package sw.accounts.io;
 
-import org.springframework.stereotype.Component;
 import sw.accounts.models.Account;
+
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,7 +23,7 @@ public class AccountsWriter
 		for ( Account a : aAccounts ) {
 			writer.print( a.getId() );
 			writer.print( "," );
-			writer.print( a.getBalance() );
+			writer.print( String.format("%.2f", a.getBalance()) );
 			writer.print( "," );
 			writer.println( a.getDefaultTransactionType() );
 		}

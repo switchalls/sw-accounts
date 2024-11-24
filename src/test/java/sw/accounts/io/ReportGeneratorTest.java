@@ -12,7 +12,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import sw.accounts.ReportGenerator;
 import sw.accounts.io.pocketmoney.PocketMoneyTransactionsReader;
 import sw.accounts.models.Account;
-import sw.accounts.models.Transaction;
 
 import java.io.File;
 import java.net.URISyntaxException;
@@ -70,8 +69,6 @@ public class ReportGeneratorTest
 		assertEquals(EXPECTED_BARCLAYS_FOR_SEPTEMBER, accounts.get(0) );
 		assertEquals(EXPECTED_FIRSTDIRECT_FOR_SEPTEMBER, accounts.get(1) );
 		assertEquals(EXPECTED_GOLDFISH_FOR_SEPTEMBER, accounts.get(2) );
-
-		final List<Transaction> transactions = testSubject.getTransactions();
 	}
 
 	private Calendar aDateForFirstOfSeptember() {
