@@ -1,0 +1,11 @@
+Account,Status,Date,Name,Amount,Number,Comment,Category
+Barclays,Cleared,30/10/2024,ID Mobile,-3.99,Direct Debit,Olen: Paid 30/09,Children : Phone
+Barclays,Cleared,30/10/2024,ID Mobile,-6,Direct Debit,Eirwen ,Children : Phone
+Barclays,Cleared,30/10/2024,ID Mobile,-17.99,Direct Debit,,Personal : Phone
+Barclays,Cleared,30/10/2024,ID Mobile,-3.99,Direct Debit,Olen,Children : Phone
+Barclays,Created,31/10/2024,Utility Warehouse,-105.86,Direct Debit,Gas,House : Bills
+Barclays,Created,31/10/2024,Utility Warehouse,-121.95,Direct Debit,Electric,House : Bills
+Barclays,Created,31/10/2024,Utility Warehouse,-53.97,Direct Debit,"Phone, broadband etc",House : Bills
+Barclays,Created,31/10/2024,Utility Warehouse,-27.19,Direct Debit,House insurance,House : Bills
+Barclays,Created,31/10/2024,Utility Warehouse,34.61,Direct Debit,,Refund
+Barclays,Created,31/10/2024,World Wildlife Fund,-3,,Eirwen,Children

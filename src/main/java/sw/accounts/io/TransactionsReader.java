@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface TransactionsReader {
 
-    List<Transaction> loadTransactions(Calendar startDate, Calendar endDate, File aPath) throws Exception;
+    List<Transaction> loadTransactions(Calendar startDate, Calendar endDate, File... files) throws Exception;
 
 }
 
