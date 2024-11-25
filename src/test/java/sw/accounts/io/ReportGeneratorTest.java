@@ -3,7 +3,6 @@ package sw.accounts.io;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -11,6 +10,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import sw.accounts.CategorySummaryGenerator;
 import sw.accounts.ReportGenerator;
+import sw.accounts.io.pocketmoney.CatamountSoftwareCsvReader;
+import sw.accounts.io.pocketmoney.GmbhCsvReader;
 import sw.accounts.io.pocketmoney.PocketMoneyTransactionsReader;
 import sw.accounts.models.Account;
 
@@ -46,21 +47,12 @@ public class ReportGeneratorTest
 
 	private ReportGenerator testSubject;
 
-	@BeforeEach
-	public void setupTestSubject() {
-		final AccountsReader accountsReader = new AccountsReader();
-
-		final CategorySummaryGenerator categorySummaryGenerator = new CategorySummaryGenerator();
-
-		final TransactionsReader transactionsReader = new PocketMoneyTransactionsReader();
-
-		testSubject = new ReportGenerator(accountsReader, mockAccountsWriter, categorySummaryGenerator, mockSummaryReportWriter, transactionsReader );
-	}
-
 	@Test
-	void shouldUpdateAccountsForSeptember() throws Exception {
+	void catamountSoftware_shouldUpdateAccountsForSeptember() throws Exception {
+		this.setupForCatamountSoftware();
+
 		testSubject.loadAccounts( aResource("AccountTotals_2024_09.csv") );
-		testSubject.loadTransactions( aFirstDayOf(9), aLastDayOf(9), aResource("Transactions_2024_09.csv") );
+		testSubject.loadTransactions( aFirstDayOf(9), aLastDayOf(9), aResource("CatamountSoftware_Transactions_2024_09.csv") );
 		testSubject.updateAccounts();
 
 		final List<Account> accounts = testSubject.getAccounts();
@@ -70,15 +62,31 @@ public class ReportGeneratorTest
 	}
 
 	@Test
-	void shouldUpdateAccountsForOctober() throws Exception {
+	void catamountSoftware_shouldUpdateAccountsForOctober() throws Exception {
+		this.setupForCatamountSoftware();
+
 		testSubject.loadAccounts( aResource("AccountTotals_2024_10.csv") );
-		testSubject.loadTransactions( aFirstDayOf(10), aLastDayOf(10), aResource("Transactions_2024_10.csv") );
+		testSubject.loadTransactions( aFirstDayOf(10), aLastDayOf(10), aResource("CatamountSoftware_Transactions_2024_10.csv") );
 		testSubject.updateAccounts();
 
 		final List<Account> accounts = testSubject.getAccounts();
 		assertEquals( aBalanceOf(BARCLAYS_ACCOUNT, 1514.2194F), accounts.get(0) );
 		assertEquals( aBalanceOf(FIRSTDIRECT_ACCOUNT, 4633.0703F), accounts.get(1) );
 		assertEquals( aBalanceOf(GOLDFISH_ACCOUNT, 23.71464F), accounts.get(2) );
+	}
+
+	@Test
+	void gmbh_shouldUpdateAccountsForOctober() throws Exception {
+		this.setupForGmbh();
+
+		testSubject.loadAccounts( aResource("AccountTotals_2024_10.csv") );
+		testSubject.loadTransactions( aFirstDayOf(10), aLastDayOf(10), aResource("Gmbh_Transactions_2024_10.csv") );
+		testSubject.updateAccounts();
+
+		final List<Account> accounts = testSubject.getAccounts();
+		assertEquals( aBalanceOf(BARCLAYS_ACCOUNT, 1514.2194F), accounts.get(0) );
+		assertEquals( aBalanceOf(FIRSTDIRECT_ACCOUNT, 4633.0703F), accounts.get(1) );
+		assertEquals( aBalanceOf(GOLDFISH_ACCOUNT, 23.714495F), accounts.get(2) );
 	}
 
 	private Account aBalanceOf(Account account, float expected) {
@@ -120,5 +128,23 @@ public class ReportGeneratorTest
 		assertNotNull( resourceUrl );
 
 		return Paths.get(resourceUrl.toURI()).toFile();
+	}
+
+	public void setupForCatamountSoftware() {
+		testSubject = new ReportGenerator(
+				new AccountsReader(),
+				mockAccountsWriter,
+				new CategorySummaryGenerator(),
+				mockSummaryReportWriter,
+				new PocketMoneyTransactionsReader( new CatamountSoftwareCsvReader() ) );
+	}
+
+	public void setupForGmbh() {
+		testSubject = new ReportGenerator(
+				new AccountsReader(),
+				mockAccountsWriter,
+				new CategorySummaryGenerator(),
+				mockSummaryReportWriter,
+				new PocketMoneyTransactionsReader( new GmbhCsvReader() ) );
 	}
 }

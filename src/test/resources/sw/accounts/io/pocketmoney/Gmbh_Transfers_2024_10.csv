@@ -1,0 +1,5 @@
+Account,Status,Date,Name,Amount,Number,Comment,Category
+Barclays,Created,25/11/2024,Transfer to Firstdirect,-650,,,
+Firstdirect,Created,25/11/2024,Transfer from Barclays,650,,,
+Firstdirect,Created,30/11/2024,Transfer to Goldfish,-1427.46,,,
+Goldfish,Created,30/11/2024,Transfer from Firstdirect,1427.46,,,

@@ -7,6 +7,7 @@ import sw.accounts.models.CategorySummary;
 import sw.accounts.models.Transaction;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -34,7 +35,7 @@ public class ReportGenerator {
 			AccountsWriter accountsWriter,
 			CategorySummaryGenerator categorySummaryGenerator,
 			SummaryReportWriter summaryReportWriter,
-			TransactionsReader transactionsReader
+			@Qualifier("catamount-software-transactions-reader") TransactionsReader transactionsReader
 	) {
 		this.accountsReader = accountsReader;
 		this.accountsWriter = accountsWriter;

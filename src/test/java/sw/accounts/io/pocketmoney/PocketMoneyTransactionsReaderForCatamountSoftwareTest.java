@@ -2,7 +2,6 @@ package sw.accounts.io.pocketmoney;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 import sw.accounts.models.Transaction;
 
@@ -20,7 +19,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
-public class PocketMoneyTransactionsReaderTest
+public class PocketMoneyTransactionsReaderForCatamountSoftwareTest
 {
 	private static final Transaction CLEARED_ELECTRONIC_TRANSFER = Transaction.builder()
 			.clazz("")
@@ -49,17 +48,16 @@ public class PocketMoneyTransactionsReaderTest
 			.account("Barclays")
 			.type("Direct Debit")
 			.clazz("Direct Debit")
-			.category("--SPLIT--")
+			.category(Transaction.SPLIT)
 			.cleared(true)
 			.memo("")
 			.build();
 
-	@InjectMocks
-	private PocketMoneyTransactionsReader testSubject;
+	private final PocketMoneyTransactionsReader testSubject = new PocketMoneyTransactionsReader( new CatamountSoftwareCsvReader() );
 
 	@Test
 	void shouldCreateSplitTransactions() throws Exception {
-		final List<Transaction> transactions = testSubject.loadTransactions( aDateForFirstOfSeptember(), aDateForEndOfSeptember(), aResource("SplitTransactions_2024_09.csv") );
+		final List<Transaction> transactions = testSubject.loadTransactions( aFirstDayOfSeptember(), aLastDayOfSeptember(), aResource("CatamountSoftware_SplitTransactions_2024_09.csv") );
 
 		assertEquals( BARCLAYS_SPLIT_PARENT.toBuilder()
 				.amount(-25.039999F)
@@ -84,18 +82,27 @@ public class PocketMoneyTransactionsReaderTest
 		assertEquals( aHouseBillSplitOf(-27.19F, "House:Bills", "House insurance"), transactions.get(8) );
 		assertEquals( aHouseBillSplitOf(21.43F, "Refund", ""), transactions.get(9) );
 
-		assertNotEquals( Transaction.SPLIT, transactions.get(10).getCategory() );
-		assertNotEquals( Transaction.SPLIT, transactions.get(10).getPayee() );
+		final Transaction lastTransaction = transactions.get(10);
+		assertNotEquals( Transaction.SPLIT, lastTransaction.getCategory() );
+		assertNotEquals( Transaction.SPLIT, lastTransaction.getPayee() );
 	}
 
 	@Test
 	void shouldCreateTransfers() throws Exception {
-		final List<Transaction> transactions = testSubject.loadTransactions( aDateForFirstOfSeptember(), aDateForEndOfSeptember(), aResource("Transfers_2024_09.csv") );
+		final List<Transaction> transactions = testSubject.loadTransactions( aFirstDayOfSeptember(), aLastDayOfSeptember(), aResource("CatamountSoftware_Transfers_2024_09.csv") );
 		assertEquals( EXPECTED_TO_CASHBACK, transactions.get(0) );
 		assertEquals( EXPECTED_FROM_FIRSTDIRECT, transactions.get(1) );
 	}
 
-	private Calendar aDateForFirstOfSeptember() {
+	private static Date aDateFor(int year, int month, int dayOfMonth) {
+		return Date.from(
+				LocalDate.of(year, month, dayOfMonth )
+						.atStartOfDay()
+						.atZone( ZoneId.systemDefault() )
+						.toInstant() );
+	}
+
+	private Calendar aFirstDayOfSeptember() {
 		final Calendar startDate = GregorianCalendar.getInstance();
 		startDate.set( Calendar.DAY_OF_MONTH, 1 );
 		startDate.set( Calendar.HOUR_OF_DAY, 0 );
@@ -109,16 +116,8 @@ public class PocketMoneyTransactionsReaderTest
 		return startDate;
 	}
 
-	private static Date aDateFor(int year, int month, int dayOfMonth) {
-		return Date.from(
-				LocalDate.of(year, month, dayOfMonth )
-					.atStartOfDay()
-					.atZone( ZoneId.systemDefault() )
-					.toInstant() );
-	}
-
-	private Calendar aDateForEndOfSeptember() {
-		final Calendar endDate = this.aDateForFirstOfSeptember();
+	private Calendar aLastDayOfSeptember() {
+		final Calendar endDate = this.aFirstDayOfSeptember();
 		endDate.set( Calendar.HOUR_OF_DAY, 23 );
 		endDate.set( Calendar.MINUTE, 59 );
 		endDate.set( Calendar.SECOND, 59 );

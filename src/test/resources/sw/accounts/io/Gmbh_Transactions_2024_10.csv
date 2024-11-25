@@ -1,0 +1,352 @@
+Account,Status,Date,Name,Amount,Number,Comment,Category
+Barclays,Cleared,25/09/2024,Rollup,7182.25,,,
+Barclays,Cleared,25/09/2024,Rollup,-16335,,,Sharon : Cash
+Barclays,Cleared,25/09/2024,Rollup,-20,,,Sharon : Christmas
+Barclays,Cleared,25/09/2024,Rollup,-5,,,Sharon : Gift
+Barclays,Cleared,25/09/2024,Rollup,-636,,,Sharon : Health
+Barclays,Cleared,25/09/2024,Rollup,-3679.66,,,Sharon : Phone
+Barclays,Cleared,25/09/2024,Rollup,20,,,
+Barclays,Created,28/09/2024,Transfer to Firstdirect,-4450,,,
+Barclays,Created,30/09/2024,O2,-29.34,,,Sharon : Phone
+Barclays,Created,30/09/2024,Utility Warehouse,-105.86,Direct Debit,Gas,House : Bills
+Barclays,Created,30/09/2024,Utility Warehouse,-121.95,Direct Debit,Electric,House : Bills
+Barclays,Created,30/09/2024,Utility Warehouse,-53.97,Direct Debit,"Phone, broadband etc",House : Bills
+Barclays,Created,30/09/2024,Utility Warehouse,-27.19,Direct Debit,House insurance,House : Bills
+Barclays,Created,30/09/2024,Utility Warehouse,21.43,Direct Debit,,Refund
+Barclays,Created,30/09/2024,World Wildlife Fund,-3,,Eirwen,Children
+Barclays,Cleared,01/10/2024,Aviva Life,-22.69,Direct Debit,Life insurance,House : Bills
+Barclays,Cleared,01/10/2024,Eleanor Witchalls,-50,,,Children
+Barclays,Cleared,01/10/2024,High Peak Council,-261,Direct Debit,Council tax,House : Bills
+Barclays,Cleared,02/10/2024,Cash,-25,,Eirwen: Explorers,Children
+Barclays,Cleared,02/10/2024,Cash,25,,,Refund
+Barclays,Cleared,02/10/2024,Petplan,-70.48,Direct Debit,Insurance ,Dog
+Barclays,Cleared,02/10/2024,Premier Vet Allianz,-22,Direct Debit,Victoria vets health plan,Dog
+Barclays,Cleared,02/10/2024,Sharon Witchalls,-100,,,Sharon : Cash
+Barclays,Cleared,16/10/2024,Datalex,192.37,,Expenses for Team Event (Dublin),Refund
+Barclays,Cleared,20/10/2024,M. Howard,100,,,Gift
+Barclays,Cleared,20/10/2024,O2,25.43,,,Refund
+Barclays,Cleared,20/10/2024,United Utilities,-76.68,Direct Debit,Water & Sewage,House : Bills
+Barclays,Cleared,21/10/2024,Benefit Agency,170.2,,Child benefit,Benefit
+Barclays,Cleared,25/10/2024,Datalex,5034.04,,,Salary
+Barclays,Cleared,28/10/2024,Transfer to Firstdirect,-4500,,,
+Barclays,Cleared,30/10/2024,ID Mobile,-3.99,Direct Debit,Olen: Paid 30/09,Children : Phone
+Barclays,Cleared,30/10/2024,ID Mobile,-6,Direct Debit,Eirwen ,Children : Phone
+Barclays,Cleared,30/10/2024,ID Mobile,-17.99,Direct Debit,Olen,Children : Phone
+Barclays,Cleared,30/10/2024,ID Mobile,-3.99,Direct Debit,Olen,Children : Phone
+Barclays,Cleared,30/10/2024,Vodaphone,-25,,,Personal : Phone
+Barclays,Cleared,30/10/2024,Vodaphone,-25,,,Sharon : Phone
+Barclays,Cleared,30/10/2024,Vodaphone,-26.52,,,Sharon : Phone
+Barclays,Created,31/10/2024,Utility Warehouse,-105.86,Direct Debit,Gas,House : Bills
+Barclays,Created,31/10/2024,Utility Warehouse,-121.95,Direct Debit,Electric,House : Bills
+Barclays,Created,31/10/2024,Utility Warehouse,-53.97,Direct Debit,"Phone, broadband etc",House : Bills
+Barclays,Created,31/10/2024,Utility Warehouse,-27.19,Direct Debit,House insurance,House : Bills
+Barclays,Created,31/10/2024,Utility Warehouse,34.61,Direct Debit,,Refund
+Barclays,Created,31/10/2024,World Wildlife Fund,-3,,Eirwen,Children
+Barclays,Created,01/11/2024,Aviva Life,-22.69,Direct Debit,Life insurance,House : Bills
+Barclays,Created,01/11/2024,Eleanor Witchalls,-50,,,Children
+Barclays,Created,01/11/2024,High Peak Council,-261,Direct Debit,Council tax,House : Bills
+Barclays,Created,02/11/2024,Petplan,-70.48,Direct Debit,Insurance ,Dog
+Barclays,Created,02/11/2024,Premier Vet Allianz,-22,Direct Debit,Victoria vets health plan,Dog
+Barclays,Created,02/11/2024,Sharon Witchalls,-100,,,Sharon : Cash
+Barclays,Created,02/11/2024,Vodaphone,-25,,,Personal : Phone
+Barclays,Created,02/11/2024,Vodaphone,-25,,,Sharon : Phone
+Barclays,Created,07/11/2024,Cash,-50,,Eirwen: Explorers camp,Children
+Barclays,Created,07/11/2024,Cash,-15,,Eirwen: Subs x2,Children
+Barclays,Created,20/11/2024,United Utilities,-76.68,Direct Debit,Water & Sewage,House : Bills
+Barclays,Created,25/11/2024,Transfer to Firstdirect,-650,,,
+Barclays,Created,30/11/2024,ID Mobile,-3.99,Direct Debit,Olen,Children : Phone
+Barclays,Created,30/11/2024,ID Mobile,-6,Direct Debit,Eirwen ,Children : Phone
+Barclays,Created,30/11/2024,ID Mobile,-17.99,Direct Debit,Olen,Children : Phone
+Barclays,Created,30/11/2024,Ray Witchalls,121.23,,,Refund
+Barclays,Created,30/11/2024,Utility Warehouse,-105.86,Direct Debit,Gas,House : Bills
+Barclays,Created,30/11/2024,Utility Warehouse,-121.95,Direct Debit,Electric,House : Bills
+Barclays,Created,30/11/2024,Utility Warehouse,-45.94,Direct Debit,"Phone, broadband etc",House : Bills
+Barclays,Created,30/11/2024,Utility Warehouse,-32.69,Direct Debit,House insurance,House : Bills
+Barclays,Created,30/11/2024,Utility Warehouse,43.38,Direct Debit,,Refund
+Firstdirect,Cleared,28/09/2024,Rollup,24137.72,,***Rollup***,
+Firstdirect,Cleared,28/09/2024,Rollup,-800,,,
+Firstdirect,Cleared,28/09/2024,Rollup,-183.6,,,Car
+Firstdirect,Cleared,28/09/2024,Rollup,-9938.91,,,Car : Repair
+Firstdirect,Cleared,28/09/2024,Rollup,-377.31,,,
+Firstdirect,Cleared,28/09/2024,Rollup,-115,,,
+Firstdirect,Cleared,28/09/2024,Rollup,-9774.34,,,Children
+Firstdirect,Cleared,28/09/2024,Rollup,-549.5,,,Children : Child Care
+Firstdirect,Cleared,28/09/2024,Rollup,-517.5,,,Children : Christmas
+Firstdirect,Cleared,28/09/2024,Rollup,-482.5,,,Children : Clothing
+Firstdirect,Cleared,28/09/2024,Rollup,163.6,,,Children : Gift
+Firstdirect,Cleared,28/09/2024,Rollup,-470,,,Children : Holiday
+Firstdirect,Cleared,28/09/2024,Rollup,-660,,,Children : Pocket Money
+Firstdirect,Cleared,28/09/2024,Rollup,-1864.5,,,Children : Travel
+Firstdirect,Cleared,28/09/2024,Rollup,-26.87,,,
+Firstdirect,Cleared,28/09/2024,Rollup,48.1,,,
+Firstdirect,Cleared,28/09/2024,Rollup,-1585,,,Dog
+Firstdirect,Cleared,28/09/2024,Rollup,325,,,Gift
+Firstdirect,Cleared,28/09/2024,Rollup,-50,,,Gift : Birthday
+Firstdirect,Cleared,28/09/2024,Rollup,-200,,,Gift : Christmas
+Firstdirect,Cleared,28/09/2024,Rollup,-35320,,,Gift : Church
+Firstdirect,Cleared,28/09/2024,Rollup,-75,,,Groceries
+Firstdirect,Cleared,28/09/2024,Rollup,-252,,,Groceries : Meal
+Firstdirect,Cleared,28/09/2024,Rollup,-11917.54,,,Holiday
+Firstdirect,Cleared,28/09/2024,Rollup,-2961.66,,,Holiday : Cash
+Firstdirect,Cleared,28/09/2024,Rollup,-550,,,Holiday : Children
+Firstdirect,Cleared,28/09/2024,Rollup,-128.03,,,Holiday : Groceries
+Firstdirect,Cleared,28/09/2024,Rollup,-241.96,,,Holiday : Personal
+Firstdirect,Cleared,28/09/2024,Rollup,-550.4,,,Holiday : Rent
+Firstdirect,Cleared,28/09/2024,Rollup,-60,,,Holiday : Sharon
+Firstdirect,Cleared,28/09/2024,Rollup,-10513.84,,,House
+Firstdirect,Cleared,28/09/2024,Rollup,-806.3,,,House : Bills
+Firstdirect,Cleared,28/09/2024,Rollup,320,,,
+Firstdirect,Cleared,28/09/2024,Rollup,-125,,,
+Firstdirect,Cleared,28/09/2024,Rollup,-240.01,,,Personal
+Firstdirect,Cleared,28/09/2024,Rollup,-330,,,Personal : Cash
+Firstdirect,Cleared,28/09/2024,Rollup,-800,,,Personal : Holiday
+Firstdirect,Cleared,28/09/2024,Rollup,-29.5,,,Personal : Meal
+Firstdirect,Cleared,28/09/2024,Rollup,1864.18,,,Refund
+Firstdirect,Cleared,28/09/2024,Rollup,71062.53,,,Salary : Sharon
+Firstdirect,Cleared,28/09/2024,Rollup,-421.96,,,Sharon
+Firstdirect,Cleared,28/09/2024,Rollup,-235,,,Sharon : Cash
+Firstdirect,Cleared,28/09/2024,Rollup,-183,,,Sharon : Gift
+Firstdirect,Cleared,28/09/2024,Rollup,-124.5,,,Sharon : Health
+Firstdirect,Cleared,01/10/2024,Christchurch East Manchester,-450,,Tithe,Gift : Church
+Firstdirect,Cleared,01/10/2024,Transfer to CashBack Card,-800,,,
+Firstdirect,Cleared,05/10/2024,Olen Witchalls,-1.7,,Refund,Groceries
+Firstdirect,Cleared,11/10/2024,H. T. Pitceathly,-48,,Eirwen: Clarinet x3,Children
+Firstdirect,Cleared,20/10/2024,Transfer to CashBack Card,-250,,,
+Firstdirect,Cleared,23/10/2024,Transfer to CashBack Card,-200,,,
+Firstdirect,Cleared,25/10/2024,Derbyshire County Council,1000.4,,,Salary : Sharon
+Firstdirect,Cleared,27/10/2024,Transfer to CashBack Card,-100,,,
+Firstdirect,Cleared,28/10/2024,C. Walker,-13,,Window cleaner,House
+Firstdirect,Cleared,28/10/2024,Transfer from Barclays,4500,,,
+Firstdirect,Cleared,28/10/2024,Transfer to Goldfish,-3465.03,,,
+Firstdirect,Cleared,01/11/2024,AB Auto,-73.6,,,Car : Repair
+Firstdirect,Cleared,01/11/2024,Andy Woodward,-175,,Front garden,House
+Firstdirect,Cleared,01/11/2024,Christchurch East Manchester,-450,,Tithe,Gift : Church
+Firstdirect,Cleared,01/11/2024,Transfer to CashBack Card,-800,,,
+Firstdirect,Created,10/11/2024,Christchurch East Manchester,-1000,,Give big,Gift : Church
+Firstdirect,Created,15/11/2024,Transfer to CashBack Card,-500,,,
+Firstdirect,Created,17/11/2024,Transfer to CashBack Card,-300,,,
+Firstdirect,Created,22/11/2024,Transfer to CashBack Card,-100,,,
+Firstdirect,Created,25/11/2024,Transfer from Barclays,650,,,
+Firstdirect,Created,30/11/2024,Transfer to Goldfish,-1427.46,,,
+Firstdirect,Created,31/12/2024,Reserve,-357.48,,Balance for title deed (garden) upgrade,House
+Goldfish,Cleared,29/09/2024,Rollup,297458.13,,***Rollup***,
+Goldfish,Cleared,29/09/2024,Rollup,-43.96,,,
+Goldfish,Cleared,29/09/2024,Rollup,-16320.32,,,Car
+Goldfish,Cleared,29/09/2024,Rollup,-8437.23,,,Car : Petrol
+Goldfish,Cleared,29/09/2024,Rollup,-1848.96,,,Car : Repair
+Goldfish,Cleared,29/09/2024,Rollup,-28003.77,,,Children
+Goldfish,Cleared,29/09/2024,Rollup,-7784.22,,,Children : Birthday
+Goldfish,Cleared,29/09/2024,Rollup,-154,,,Children : Celebration
+Goldfish,Cleared,29/09/2024,Rollup,-88.48,,,Children : Child Care
+Goldfish,Cleared,29/09/2024,Rollup,-7899.83,,,Children : Christmas
+Goldfish,Cleared,29/09/2024,Rollup,-14362.66,,,Children : Clothing
+Goldfish,Cleared,29/09/2024,Rollup,-29.98,,,
+Goldfish,Cleared,29/09/2024,Rollup,-608.57,,,Children : Gift
+Goldfish,Cleared,29/09/2024,Rollup,-476.81,,,Children : Health
+Goldfish,Cleared,29/09/2024,Rollup,-565.03,,,Children : Holiday
+Goldfish,Cleared,29/09/2024,Rollup,-193.35,,,Children : Meal
+Goldfish,Cleared,29/09/2024,Rollup,-335.06,,,Children : Phone
+Goldfish,Cleared,29/09/2024,Rollup,-295.11,,,Children : Toys
+Goldfish,Cleared,29/09/2024,Rollup,-29.35,,,
+Goldfish,Cleared,29/09/2024,Rollup,-14.6,,,Church
+Goldfish,Cleared,29/09/2024,Rollup,-2.03,,,
+Goldfish,Cleared,29/09/2024,Rollup,-8,,,
+Goldfish,Cleared,29/09/2024,Rollup,-4252.55,,,Dog
+Goldfish,Cleared,29/09/2024,Rollup,-507.91,,,Dog : Health
+Goldfish,Cleared,29/09/2024,Rollup,19.75,,,
+Goldfish,Cleared,29/09/2024,Rollup,-20,,,
+Goldfish,Cleared,29/09/2024,Rollup,-3449.12,,,Gift
+Goldfish,Cleared,29/09/2024,Rollup,-1363.99,,,Gift : Birthday
+Goldfish,Cleared,29/09/2024,Rollup,-3679.86,,,Gift : Christmas
+Goldfish,Cleared,29/09/2024,Rollup,-64.92,,,
+Goldfish,Cleared,29/09/2024,Rollup,-41783.12,,,Groceries
+Goldfish,Cleared,29/09/2024,Rollup,-67.21,,,
+Goldfish,Cleared,29/09/2024,Rollup,-546.81,,,Groceries : Christmas
+Goldfish,Cleared,29/09/2024,Rollup,-14975.65,,,Groceries : Meal
+Goldfish,Cleared,29/09/2024,Rollup,-21.61,,,
+Goldfish,Cleared,29/09/2024,Rollup,-22486.23,,,Holiday
+Goldfish,Cleared,29/09/2024,Rollup,-1577.68,,,Holiday : Children
+Goldfish,Cleared,29/09/2024,Rollup,-267.08,,,Holiday : Clothing
+Goldfish,Cleared,29/09/2024,Rollup,-121.44,,,Holiday : Gift
+Goldfish,Cleared,29/09/2024,Rollup,-4782.82,,,Holiday : Groceries
+Goldfish,Cleared,29/09/2024,Rollup,-7612.26,,,Holiday : Meal
+Goldfish,Cleared,29/09/2024,Rollup,-539.42,,,Holiday : Personal
+Goldfish,Cleared,29/09/2024,Rollup,-1818.3,,,Holiday : Petrol
+Goldfish,Cleared,29/09/2024,Rollup,-6643.99,,,Holiday : Rent
+Goldfish,Cleared,29/09/2024,Rollup,-42.04,,,Holiday : Sharon
+Goldfish,Cleared,29/09/2024,Rollup,-150.39,,,Holiday : Travel
+Goldfish,Cleared,29/09/2024,Rollup,-41273.92,,,House
+Goldfish,Cleared,29/09/2024,Rollup,-1771.6,,,House : Bills
+Goldfish,Cleared,29/09/2024,Rollup,-149.85,,,House : Christmas
+Goldfish,Cleared,29/09/2024,Rollup,-1098.2,,,House : Repair
+Goldfish,Cleared,29/09/2024,Rollup,-13.6,,,
+Goldfish,Cleared,29/09/2024,Rollup,-51.47,,,
+Goldfish,Cleared,29/09/2024,Rollup,-287.92,,,
+Goldfish,Cleared,29/09/2024,Rollup,-2091.72,,,
+Goldfish,Cleared,29/09/2024,Rollup,-2134.49,,,
+Goldfish,Cleared,29/09/2024,Rollup,-17265.56,,,Personal
+Goldfish,Cleared,29/09/2024,Rollup,-188.95,,,Personal : Birthday
+Goldfish,Cleared,29/09/2024,Rollup,-1602.88,,,Personal : Christmas
+Goldfish,Cleared,29/09/2024,Rollup,-5172.98,,,Personal : Clothing
+Goldfish,Cleared,29/09/2024,Rollup,-983.36,,,Personal : Gift
+Goldfish,Cleared,29/09/2024,Rollup,-4141.26,,,Personal : Health
+Goldfish,Cleared,29/09/2024,Rollup,-159.59,,,Personal : Holiday
+Goldfish,Cleared,29/09/2024,Rollup,-6033.82,,,Personal : Meal
+Goldfish,Cleared,29/09/2024,Rollup,-281.48,,,Personal : Phone
+Goldfish,Cleared,29/09/2024,Rollup,-587.71,,,Personal : Work
+Goldfish,Cleared,29/09/2024,Rollup,-252.29,,,
+Goldfish,Cleared,29/09/2024,Rollup,31.49,,,
+Goldfish,Cleared,29/09/2024,Rollup,6883.58,,,Refund
+Goldfish,Cleared,29/09/2024,Rollup,150,,,Salary
+Goldfish,Cleared,29/09/2024,Rollup,-5119.49,,,Sharon
+Goldfish,Cleared,29/09/2024,Rollup,-159.91,,,Sharon : Birthday
+Goldfish,Cleared,29/09/2024,Rollup,-743.13,,,Sharon : Christmas
+Goldfish,Cleared,29/09/2024,Rollup,-3106.61,,,Sharon : Clothing
+Goldfish,Cleared,29/09/2024,Rollup,-435.1,,,Sharon : Gift
+Goldfish,Cleared,29/09/2024,Rollup,-36.19,,,Sharon : Groceries
+Goldfish,Cleared,29/09/2024,Rollup,-2655.06,,,Sharon : Health
+Goldfish,Cleared,29/09/2024,Rollup,-352.86,,,Sharon : Meal
+Goldfish,Cleared,29/09/2024,Rollup,-63.99,,,Sharon : Phone
+Goldfish,Cleared,29/09/2024,Rollup,-451.66,,,Sharon : Work
+Goldfish,Cleared,29/09/2024,Rollup,-849.14,,,Work
+Goldfish,Cleared,29/09/2024,Rollup,-444.12,,,Work : Expenses
+Goldfish,Cleared,29/09/2024,Rollup,-193.93,,,Work : Meal
+Goldfish,Cleared,29/09/2024,Rollup,-129.37,,,Work : Travel
+Goldfish,Cleared,01/10/2024,Costa,-2.5,,,Sharon
+Goldfish,Cleared,01/10/2024,Jones Shoe & Repair,-2,,School stuff,Sharon : Work
+Goldfish,Cleared,01/10/2024,Peter Hughes,-210,,Kitchen tap repair,House
+Goldfish,Cleared,01/10/2024,Tesco,-15.71,,Lunch x3,Groceries : Meal
+Goldfish,Cleared,01/10/2024,Tesco,-3.6,,Lunch x1,Groceries : Meal
+Goldfish,Cleared,01/10/2024,Twinkl,-10.99,,Subscription,Sharon
+Goldfish,Cleared,02/10/2024,Tesco,-4.25,,Lunch,Personal : Meal
+Goldfish,Cleared,03/10/2024,Croke Park Hotel,-12.35,,Drinks x2,Personal
+Goldfish,Cleared,03/10/2024,Tesco,-12.09,,,Groceries
+Goldfish,Cleared,03/10/2024,Uber,-33.9,,Airport taxi,Work : Travel
+Goldfish,Cleared,04/10/2024,Burger King,-9.76,,Lunch,Work : Meal
+Goldfish,Cleared,04/10/2024,Dub Nineteen,-2.83,,Drink,Work : Meal
+Goldfish,Cleared,04/10/2024,eBay,-5.86,,Eirwen: Book,Children
+Goldfish,Cleared,04/10/2024,Northern Railway,-7.9,,Travel home,Work : Travel
+Goldfish,Cleared,04/10/2024,Uber,-23.45,,Airport taxi (27.8 euros),Work : Travel
+Goldfish,Cleared,04/10/2024,W. H. Smith,-15.18,,Chocolate ,Children
+Goldfish,Cleared,06/10/2024,Amazon,-34.97,,Eirwen ,Children : Clothing
+Goldfish,Cleared,06/10/2024,Tesco,-4.4,,,Groceries
+Goldfish,Cleared,07/10/2024,ao.com,-1939,,Rangemaster Professional Plus,House
+Goldfish,Cleared,07/10/2024,ao.com,-39.99,,AO 5* membership,House
+Goldfish,Cleared,07/10/2024,Tesco,-3.6,,Lunch,Personal : Meal
+Goldfish,Cleared,08/10/2024,Mcdonalds,-12.98,,,Groceries : Meal
+Goldfish,Cleared,08/10/2024,The Palentine,-8.48,,Drinks x2,Personal
+Goldfish,Cleared,08/10/2024,The Palentine,-3.95,,,Personal
+Goldfish,Cleared,09/10/2024,Limekiln Cafe,-20.1,,Lunch x2,Sharon
+Goldfish,Cleared,10/10/2024,Big Brekkie,-5,,Lunch,Personal : Meal
+Goldfish,Cleared,10/10/2024,Tesco,-7.17,,,Groceries
+Goldfish,Cleared,10/10/2024,Tesco,-2.25,,,Groceries
+Goldfish,Cleared,10/10/2024,Trafford College,-50,,Olen: Vienna trip (deposit),Children
+Goldfish,Cleared,11/10/2024,Peter Hughes,-60,,Boiler drainage repair,House
+Goldfish,Cleared,12/10/2024,Costcutter,-2.35,,Biscuits,Groceries
+Goldfish,Cleared,12/10/2024,Mcdonalds,-9.47,,Snacks x2,Groceries : Meal
+Goldfish,Cleared,12/10/2024,Trishaz Treat,-2,,Lunch,Groceries : Meal
+Goldfish,Cleared,13/10/2024,Tesco,-10.45,,,Groceries
+Goldfish,Cleared,14/10/2024,Amazon,-24.99,,Olen: Headphones,Children
+Goldfish,Cleared,14/10/2024,Chopstix,-7.79,,Dinner,Personal : Meal
+Goldfish,Cleared,14/10/2024,Greggs,-7.15,,Lunch,Personal : Meal
+Goldfish,Cleared,14/10/2024,Northern Railway,-9.9,,,Personal : Work
+Goldfish,Cleared,15/10/2024,Pets At Home,-21.49,,,Dog
+Goldfish,Cleared,15/10/2024,Tesco,-31.39,,,Groceries
+Goldfish,Cleared,15/10/2024,The Rajni,-28.6,,Dinner x3,Groceries : Meal
+Goldfish,Cleared,16/10/2024,Costa Coffee,-7.5,,,Personal : Meal
+Goldfish,Cleared,16/10/2024,Nintendo,-31.49,,Switch online family subscription,Children
+Goldfish,Cleared,16/10/2024,Northern Railway,-9.9,,,Personal : Work
+Goldfish,Cleared,16/10/2024,Tesco,-7.3,,,Groceries
+Goldfish,Cleared,17/10/2024,Simply One Dental,-26.8,,Dentist,Personal : Health
+Goldfish,Cleared,17/10/2024,Simply One Dental,-20,,Hygienist deposit ,Personal : Health
+Goldfish,Cleared,18/10/2024,Costa Coffee,-13.45,,,Sharon
+Goldfish,Cleared,19/10/2024,Sports Direct,-29.49,,,Personal : Clothing
+Goldfish,Cleared,19/10/2024,Tesco,-11.45,,,Groceries
+Goldfish,Cleared,19/10/2024,Tesco,-18.84,,,Groceries
+Goldfish,Cleared,19/10/2024,Tesco,-10.81,,Printing paper etc,House
+Goldfish,Cleared,19/10/2024,Tesco,-20.45,,Olen: Cooking,Children
+Goldfish,Cleared,19/10/2024,The Sherlock Holmes Museum,-34.5,,Eirwen: Admission x2,Holiday
+Goldfish,Cleared,20/10/2024,Tesco,-6.05,,,Groceries
+Goldfish,Cleared,20/10/2024,The Mill Tea Room,-39.12,,Lunch x4,Personal : Meal
+Goldfish,Cleared,21/10/2024,Bundobust,-17.9,,Drinks x3,Personal : Meal
+Goldfish,Cleared,21/10/2024,Bundobust,-16.6,,Drinks x3,Personal : Meal
+Goldfish,Cleared,21/10/2024,Northern Railway,-9.9,,,Personal : Work
+Goldfish,Cleared,21/10/2024,Tesco,-7.2,,,Groceries
+Goldfish,Cleared,22/10/2024,Netflix,-4.99,,,House
+Goldfish,Cleared,22/10/2024,Spar,-4.08,,,Sharon
+Goldfish,Cleared,26/10/2024,Charing Cross Road,-13,,Donuts x2,Holiday : Meal
+Goldfish,Cleared,26/10/2024,Duck World,-30,,Caoimhe & Eleanor,Children : Christmas
+Goldfish,Cleared,26/10/2024,London Transport,-7.9,,Eirwen: Day pass,Holiday
+Goldfish,Cleared,26/10/2024,London Transport,-7,,Personal travel,Holiday
+Goldfish,Cleared,26/10/2024,Paul Marylebone,-3.75,,Snack,Holiday : Meal
+Goldfish,Cleared,26/10/2024,SRL Management,-15,,Parking,Children
+Goldfish,Cleared,26/10/2024,Tesco,-7.2,,,Groceries
+Goldfish,Cleared,26/10/2024,The Royal Parks,-0.2,,Toilet,Personal
+Goldfish,Cleared,26/10/2024,The Royal Parks,-0.2,,Toilet ,Personal
+Goldfish,Cleared,26/10/2024,The Sherlock Holmes,-46.5,,Dinner x2,Holiday : Meal
+Goldfish,Cleared,26/10/2024,The Sherlock Holmes Museum,-46,,Eirwen,Children : Christmas
+Goldfish,Cleared,26/10/2024,The Sherlock Holmes Museum,-35.19,,Eirwen,Children
+Goldfish,Cleared,26/10/2024,The Sherlock Holmes Museum,-6,,Fridge magnet,Personal
+Goldfish,Cleared,26/10/2024,Waitrose,-13.5,,Lunch x2,Holiday : Meal
+Goldfish,Cleared,26/10/2024,Waitrose,-2.25,,Water,Holiday : Groceries
+Goldfish,Cleared,27/10/2024,Sainsburys,-19,,,Groceries
+Goldfish,Cleared,27/10/2024,The Green Owl,-47.55,,Breakfast x2 & Cake,Holiday : Meal
+Goldfish,Cleared,27/10/2024,Waitrose,-13.8,,Lunch x2,Holiday : Groceries
+Goldfish,Cleared,28/10/2024,Transfer from Firstdirect,3465.03,,,
+Goldfish,Cleared,28/10/2024,Victoria Pets,-67.35,,,Dog : Health
+Goldfish,Cleared,29/10/2024,Tesco,-16.39,,,Groceries
+Goldfish,Cleared,30/10/2024,Northern Railway,-9.9,,,Personal : Work
+Goldfish,Cleared,31/10/2024,ao.com,50,,,Refund
+Goldfish,Cleared,01/11/2024,Cex,-222.95,,IPod touch,Personal
+Goldfish,Cleared,01/11/2024,Hadfield Bakery,-13.8,,,Groceries
+Goldfish,Cleared,01/11/2024,Tesco,-19.05,,,Groceries
+Goldfish,Cleared,01/11/2024,Tesco,-4.4,,Lunch,Personal : Meal
+Goldfish,Cleared,01/11/2024,Twinkl,-10.99,,,Sharon
+Goldfish,Cleared,01/11/2024,Yorkshire Wildlife Park,-34.2,,,Children
+Goldfish,Cleared,01/11/2024,Yorkshire Wildlife Park,-7.02,,,Children
+Goldfish,Cleared,02/11/2024,Tesco,-1.55,,,Groceries
+Goldfish,Cleared,03/11/2024,Tesco,-6.52,,,Groceries
+Goldfish,Cleared,04/11/2024,Apple,-9.99,,,Personal
+Goldfish,Cleared,04/11/2024,Cex,-22.95,,,Personal
+Goldfish,Cleared,04/11/2024,Twig,-12.6,,,Sharon
+Goldfish,Cleared,05/11/2024,Giovanni Deli,-7.95,,,Personal : Meal
+Goldfish,Cleared,05/11/2024,Northern Rail,-9.9,,,Personal : Work
+Goldfish,Cleared,06/11/2024,Etsy.com,-2.89,,,Sharon
+Goldfish,Cleared,06/11/2024,Nazar,-9,,,Personal : Meal
+Goldfish,Cleared,06/11/2024,Northern Railway,-9.9,,,Personal : Work
+Goldfish,Created,07/11/2024,Hadfield Bakery,-11.45,,,Groceries
+Goldfish,Created,09/11/2024,Canella,-22.1,,Lunch x2,Groceries : Meal
+Goldfish,Created,09/11/2024,Glossop Craft Center,-6.25,,,Sharon : Church
+Goldfish,Created,09/11/2024,Royal British Legion,-20,,Poppies x3,Gift
+Goldfish,Created,10/11/2024,Amazon,-39.99,,Blake’s 7,Personal
+Goldfish,Created,11/11/2024,Spar,-2.49,,,Sharon
+Goldfish,Created,12/11/2024,etsy.con,-6.15,,Eirwen: Badges,Children
+Goldfish,Created,12/11/2024,Mcdonalds,-18,,Dinner x3,Groceries : Meal
+Goldfish,Created,13/11/2024,Amazon,-16.96,,Eirwen: Pens & Badges,Children
+Goldfish,Created,13/11/2024,Gluhwein,-17,,Drinks x2,Personal
+Goldfish,Created,13/11/2024,Go Outdoors,-69.5,,,Personal : Clothing
+Goldfish,Created,13/11/2024,Ruperts,-11.4,,Fudge,Sharon : Groceries
+Goldfish,Created,15/11/2024,Hair by Georgia,-70,,,Sharon : Health
+Goldfish,Created,15/11/2024,Northern Rail,-9.9,,,Personal : Work
+Goldfish,Created,15/11/2024,Trafford College,-100,,Olen: Vienna trip (instalment),Children
+Goldfish,Created,16/11/2024,Poco Lounge,-48.5,,Dinner x2,Personal : Meal
+Goldfish,Created,16/11/2024,Poco Lounge,-8.4,,Desert x2,Personal : Meal
+Goldfish,Created,16/11/2024,Tesco,-9.15,,,Groceries
+Goldfish,Created,16/11/2024,Tesco,-3.1,,,Groceries
+Goldfish,Created,18/11/2024,Chillionrice,-9,,Lunch,Personal : Meal
+Goldfish,Created,19/11/2024,Boots,-17.1,,,Sharon : Health
+Goldfish,Created,19/11/2024,Simply One Dental,-39,,Hygienist (balance),Personal : Health
+Goldfish,Created,19/11/2024,Simply One Dental,-26.8,,Dentist ,Sharon : Health
+Goldfish,Created,19/11/2024,Tameside Council,-1.5,,Parking,Personal
+Goldfish,Created,19/11/2024,The Palentine,-3.95,,Drink,Personal
+Goldfish,Created,19/11/2024,The Palentine,-3.95,,,Personal
+Goldfish,Created,20/11/2024,Ovoenergy,-121.23,,,Other : Ray
+Goldfish,Created,20/11/2024,Tesco,-4.65,,,Groceries
+Goldfish,Created,20/11/2024,Tesco,-299.45,,VW: Insurance,Car
+Goldfish,Created,21/11/2024,Hadfield Bakery,-4.25,,Lunch,Personal : Meal
+Goldfish,Created,21/11/2024,Tesco,-4.55,,,Groceries
+Goldfish,Created,21/11/2024,Tesco,-4,,,Groceries
+Goldfish,Created,22/11/2024,Netflix,-4.99,,,House
+Goldfish,Created,23/11/2024,Tesco,-1.65,,,Groceries
+Goldfish,Created,24/11/2024,Tesco,-9.1,,,Sharon : Health
+Goldfish,Created,30/11/2024,Transfer from Firstdirect,1427.46,,,
