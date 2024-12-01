@@ -6,6 +6,7 @@ import sw.accounts.models.Transaction;
 
 import java.io.*;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -23,11 +24,11 @@ public class PocketMoneyTransactionsReader implements TransactionsReader {
 	}
 
 	@Override
-	public List<Transaction> loadTransactions(Calendar startDate, Calendar endDate, File... files) throws Exception {
+	public List<Transaction> loadTransactions(Calendar startDate, Calendar endDate, Path... transactionFiles) throws Exception {
 		final List<Transaction> transactions = new ArrayList<>();
 
-		for (File f : files) {
-			try (InputStream is = Files.newInputStream(f.toPath())) {
+		for (Path p : transactionFiles) {
+			try (InputStream is = Files.newInputStream(p)) {
 				transactions.addAll( this.loadTransactions(startDate, endDate, is) );
 			}
 		}

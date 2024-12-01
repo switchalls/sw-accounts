@@ -6,19 +6,19 @@ import sw.accounts.io.csv.CsvTokeniser;
 import sw.accounts.models.Account;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
 public class AccountsReader {
 
-    public List<Account> loadAccounts(File aPath) throws AccountsException, IOException {
-        try (InputStream in = Files.newInputStream(aPath.toPath())) {
+    public List<Account> loadAccounts(Path path) throws AccountsException, IOException {
+        try (InputStream in = Files.newInputStream(path)) {
             return this.loadAccounts(in);
         }
 	}

@@ -11,8 +11,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -51,12 +51,12 @@ public class ReportGenerator {
 		return this.accounts;
 	}
 
-	public void loadAccounts(File aAccountsFile) throws Exception {
-		this.accounts = this.accountsReader.loadAccounts( aAccountsFile );
+	public void loadAccounts(Path accountsFile) throws Exception {
+		this.accounts = this.accountsReader.loadAccounts( accountsFile );
 	}
 
-	public void persistAccounts(File aAccountsFile) throws Exception {
-		this.accountsWriter.writeFile( aAccountsFile, this.getAccounts() );
+	public void persistAccounts(Path accountsFile) throws Exception {
+		this.accountsWriter.writeFile( accountsFile, this.getAccounts() );
 	}
 
 	public void updateAccounts() throws AccountsException {
@@ -76,16 +76,16 @@ public class ReportGenerator {
 		return this.transactions;
 	}
 
-	public void loadTransactions(Calendar startDate, Calendar endDate, File aTransactionsFile) throws Exception {
+	public void loadTransactions(Calendar startDate, Calendar endDate, Path... transactionFiles) throws Exception {
 		this.transactions = transactionsReader.loadTransactions(
-			startDate, endDate, aTransactionsFile
+			startDate, endDate, transactionFiles
 		);
 
 		this.setDefaultTransactionTypes();
 	}
 
-	public void generateSummaryReport(File aOutFile) throws AccountsException, IOException {
-		this.summaryReportWriter.writeReport( aOutFile, this.getAccounts(), this.getTransactions(), this.getCategorySummaries() );
+	public void generateSummaryReport(Path reportFile) throws AccountsException, IOException {
+		this.summaryReportWriter.writeReport( reportFile, this.getAccounts(), this.getTransactions(), this.getCategorySummaries() );
 	}
 
 	private Account getAccount(String aName) throws AccountsException {

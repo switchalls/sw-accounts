@@ -7,9 +7,10 @@ import sw.accounts.models.Transaction;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Comparator;
@@ -23,13 +24,13 @@ public class SummaryReportWriter {
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat( "dd/MM/yyyy" );
 
     public void writeReport(
-            File aOutFile,
+            Path reportFile,
             List<Account> accounts,
             List<Transaction> transactions,
             List<CategorySummary> categorySummaries)
     throws  IOException {
 
-        try (PrintWriter writer = new PrintWriter(aOutFile)) {
+        try (PrintWriter writer = new PrintWriter(Files.newOutputStream(reportFile))) {
             for (Account a : accounts) {
                 writer.print(a.getId());
                 writer.print(",");

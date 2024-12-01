@@ -1,13 +1,15 @@
 package sw.accounts.io.pocketmoney;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 import sw.accounts.models.Transaction;
 
-import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -15,8 +17,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 public class PocketMoneyTransactionsReaderForCatamountSoftwareTest
@@ -130,11 +130,11 @@ public class PocketMoneyTransactionsReaderForCatamountSoftwareTest
 		return endDate;
 	}
 
-	private File aResource(String name) throws URISyntaxException {
+	private Path aResource(String name) throws URISyntaxException {
 		final URL resourceUrl = this.getClass().getResource(name );
 		assertNotNull( resourceUrl );
 
-		return Paths.get(resourceUrl.toURI()).toFile();
+		return Paths.get(resourceUrl.toURI());
 	}
 
 	private Transaction aHouseBillSplitOf(float amount, String category, String memo) {

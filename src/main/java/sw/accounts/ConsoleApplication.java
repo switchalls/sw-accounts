@@ -1,14 +1,16 @@
 package sw.accounts;
 
-import java.io.File;
-import java.io.PrintStream;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.io.IOException;
+import java.io.PrintStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.*;
 
 @SpringBootApplication
 public class ConsoleApplication implements CommandLineRunner {
@@ -29,16 +31,19 @@ public class ConsoleApplication implements CommandLineRunner {
 
         final Calendar startDate = this.createReportStartDate();
         final Calendar endDate = this.createReportEndDate();
+        final Path accountsFile = Paths.get(args[0]);
+        final Path transactionFiles  = Paths.get(args[1]);
+        final Path reportFile  = Paths.get(args[2]);
 
-        reportGenerator.loadAccounts( new File(args[0]) );
-        reportGenerator.loadTransactions( startDate, endDate, new File(args[1]) );
+        reportGenerator.loadAccounts( accountsFile );
+        reportGenerator.loadTransactions( startDate, endDate, listCsvFiles(transactionFiles) );
         reportGenerator.updateAccounts();
-        reportGenerator.generateSummaryReport( new File(args[2]) );
-        reportGenerator.persistAccounts( new File(args[0]) );
+        reportGenerator.generateSummaryReport( reportFile );
+        reportGenerator.persistAccounts( accountsFile );
     }
 
     private void printUsage(PrintStream out) {
-        out.println("Usage: ReportGenerator <accounts.csv> <transactions.csv> <output.csv>");
+        out.println("Usage: ReportGenerator <accounts.csv> <transactions folder> <output.csv>");
     }
 
     private Calendar createReportStartDate() {
@@ -70,5 +75,15 @@ public class ConsoleApplication implements CommandLineRunner {
         endDate.roll( Calendar.DAY_OF_YEAR, -1 );
 
         return endDate;
+    }
+
+    private Path[] listCsvFiles(Path rootFile) throws IOException {
+        if (rootFile.toFile().isDirectory()) {
+            return Files.walk(rootFile)
+                    .filter((p) -> p.endsWith(".csv"))
+                    .toArray(Path[]::new);
+        }
+
+        return new Path[] { rootFile };
     }
 }

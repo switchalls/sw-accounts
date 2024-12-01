@@ -9,9 +9,9 @@ import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 import sw.accounts.models.Account;
 
-import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
@@ -50,10 +50,10 @@ public class AccountsReaderTest
 				.build();
 	}
 
-	private File aResource(String name) throws URISyntaxException {
+	private Path aResource(String name) throws URISyntaxException {
 		final URL resourceUrl = this.getClass().getResource( name );
 		assertNotNull( resourceUrl );
 
-		return Paths.get(resourceUrl.toURI()).toFile();
+		return Paths.get(resourceUrl.toURI());
 	}
 }
