@@ -1,7 +1,8 @@
-package sw.accounts.io.pocketmoney;
+package sw.accounts.io.pocketmoney.csv;
 
 import sw.accounts.exceptions.AccountsException;
 import sw.accounts.io.csv.CsvTokeniser;
+import sw.accounts.io.pocketmoney.TransactionReader;
 import sw.accounts.models.Transaction;
 
 import java.text.SimpleDateFormat;

@@ -10,8 +10,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import sw.accounts.CategorySummaryGenerator;
 import sw.accounts.ReportGenerator;
-import sw.accounts.io.pocketmoney.CatamountSoftwareCsvReader;
-import sw.accounts.io.pocketmoney.GmbhCsvReader;
+import sw.accounts.io.pocketmoney.csv.CatamountSoftwareCsvReader;
+import sw.accounts.io.pocketmoney.csv.GmbhCsvReader;
 import sw.accounts.io.pocketmoney.PocketMoneyTransactionsReader;
 import sw.accounts.models.Account;
 

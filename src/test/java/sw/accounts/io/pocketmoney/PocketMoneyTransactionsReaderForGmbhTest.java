@@ -2,10 +2,12 @@ package sw.accounts.io.pocketmoney;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import sw.accounts.io.pocketmoney.csv.GmbhCsvReader;
+import sw.accounts.models.Transaction;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
-import sw.accounts.models.Transaction;
 
 import java.net.URISyntaxException;
 import java.net.URL;

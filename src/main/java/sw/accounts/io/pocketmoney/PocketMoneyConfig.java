@@ -1,6 +1,8 @@
 package sw.accounts.io.pocketmoney;
 
 import sw.accounts.io.TransactionsReader;
+import sw.accounts.io.pocketmoney.csv.CatamountSoftwareCsvReader;
+import sw.accounts.io.pocketmoney.csv.GmbhCsvReader;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
