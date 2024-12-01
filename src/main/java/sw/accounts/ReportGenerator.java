@@ -35,7 +35,7 @@ public class ReportGenerator {
 			AccountsWriter accountsWriter,
 			CategorySummaryGenerator categorySummaryGenerator,
 			SummaryReportWriter summaryReportWriter,
-			@Qualifier("catamount-software-transactions-reader") TransactionsReader transactionsReader
+			@Qualifier("gmbh-transactions-reader") TransactionsReader transactionsReader
 	) {
 		this.accountsReader = accountsReader;
 		this.accountsWriter = accountsWriter;
