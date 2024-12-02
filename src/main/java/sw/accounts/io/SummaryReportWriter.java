@@ -32,26 +32,29 @@ public class SummaryReportWriter {
 
         try (PrintWriter writer = new PrintWriter(Files.newOutputStream(reportFile))) {
             for (Account a : accounts) {
-                writer.print(a.getId());
-                writer.print(",");
-                this.printFloat( writer, a.getBalance() );
-                writer.println();
+                int lineCount = 0;
 
                 final Collection<Transaction> tlist = this.getTransactionsForAccount(a, transactions);
                 for (Transaction t : tlist) {
-                    writer.print(",");
-                    writer.print(",");
+                    if ( lineCount < 1 ) {
+                        this.printAccountId( writer, a );
+                    } else if ( lineCount < 2 ) {
+                        this.printAccountBalance( writer, a );
+                    } else {
+                        writer.print(",,,");
+                    }
+
                     this.printDate( writer, t.getDate() );
                     writer.print(",");
 
                     if (StringUtils.hasLength(t.getCheckNumber())) {
-                        writer.print(t.getCheckNumber());
+                        writer.print( t.getCheckNumber() );
                         writer.print(": ");
                     }
 
-                    writer.print(t.getPayee());
+                    writer.print( t.getPayee() );
                     writer.print(",");
-                    writer.print(t.getCategory());
+                    writer.print( t.getCategory() );
                     writer.print(",");
                     this.printFloat( writer, t.getAmount() );
                     writer.print(",");
@@ -67,10 +70,23 @@ public class SummaryReportWriter {
                     writer.print(",");
 
                     if (StringUtils.hasLength(t.getMemo())) {
-                        writer.print("\"" + t.getMemo() + "\"");
+                        writer.print( "\"" + t.getMemo() + "\"" );
                     }
 
                     writer.println();
+                    lineCount++;
+                }
+
+                switch ( lineCount ) {
+                    case 0:
+                        this.printAccountId( writer, a );
+                        writer.println(",,,,,,,");
+
+                        // drop through
+
+                    case 1:
+                        this.printAccountBalance( writer, a );
+                        writer.println(",,,,,,,");
                 }
 
                 writer.println();
@@ -85,7 +101,7 @@ public class SummaryReportWriter {
                 if (StringUtils.hasLength(s.getCategory()) && !Transaction.SPLIT.equals(s.getCategory())) {
                     writer.print(",");
                     writer.print(",");
-                    writer.print(s.getCategory());
+                    writer.print( s.getCategory() );
                     writer.print(",");
                     this.printFloat( writer, s.getTotal() );
                     writer.println();
@@ -100,8 +116,20 @@ public class SummaryReportWriter {
                 .collect(Collectors.toList());
     }
 
+    private void printAccountId(PrintWriter writer, Account account) {
+        writer.print("Account:,");
+        writer.print( account.getId() );
+        writer.print(",,");
+    }
+
+    private void printAccountBalance(PrintWriter writer, Account account) {
+        writer.print("End Balance:,");
+        printFloat( writer, account.getBalance() );
+        writer.print(",,");
+    }
+
     private void printDate(PrintWriter writer, Date value) {
-        writer.print(  DATE_FORMAT.format(value) );
+        writer.print( DATE_FORMAT.format(value) );
     }
 
     private void printFloat(PrintWriter writer, float value) {
