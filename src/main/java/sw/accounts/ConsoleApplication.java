@@ -80,7 +80,7 @@ public class ConsoleApplication implements CommandLineRunner {
     private Path[] listCsvFiles(Path rootFile) throws IOException {
         if (rootFile.toFile().isDirectory()) {
             return Files.walk(rootFile)
-                    .filter((p) -> p.endsWith(".csv"))
+                    .filter((p) -> p.toString().endsWith(".csv"))
                     .toArray(Path[]::new);
         }
 

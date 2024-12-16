@@ -52,6 +52,11 @@ public class PocketMoneyTransactionsReader implements TransactionsReader {
 
 		String s;
 		while ( (s = reader.readLine()) != null ) {
+			if ( s.isEmpty() ) {
+				// last ine can be empty
+				break;
+			}
+
 			lineCount++;
 
 			try {
