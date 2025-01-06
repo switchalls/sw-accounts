@@ -7,10 +7,8 @@ import sw.accounts.models.Transaction;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
-import java.io.IOException;
+import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Comparator;
@@ -24,90 +22,111 @@ public class SummaryReportWriter {
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat( "dd/MM/yyyy" );
 
     public void writeReport(
-            Path reportFile,
+            OutputStream reportFile,
             List<Account> accounts,
             List<Transaction> transactions,
-            List<CategorySummary> categorySummaries)
-    throws  IOException {
+            List<CategorySummary> categorySummaries) {
+			
+        final PrintWriter writer = new PrintWriter(reportFile);
+		for (Account a : accounts) {
+			int lineCount = 0;
 
-        try (PrintWriter writer = new PrintWriter(Files.newOutputStream(reportFile))) {
-            for (Account a : accounts) {
-                int lineCount = 0;
+			final Collection<Transaction> tlist = this.getTransactionsForAccount(a, transactions);
+			for (Transaction t : tlist) {
+				if ( lineCount < 1 ) {
+					this.printAccountId( writer, a );
+				} else if ( lineCount < 2 ) {
+					this.printAccountBalance( writer, a );
+				} else {
+					writer.print(",,,");
+				}
 
-                final Collection<Transaction> tlist = this.getTransactionsForAccount(a, transactions);
-                for (Transaction t : tlist) {
-                    if ( lineCount < 1 ) {
-                        this.printAccountId( writer, a );
-                    } else if ( lineCount < 2 ) {
-                        this.printAccountBalance( writer, a );
-                    } else {
-                        writer.print(",,,");
-                    }
+				this.printDate( writer, t.getDate() );
+				writer.print(",");
 
-                    this.printDate( writer, t.getDate() );
-                    writer.print(",");
+				if (StringUtils.hasLength(t.getCheckNumber())) {
+					writer.print( t.getCheckNumber() );
+					writer.print(": ");
+				}
 
-                    if (StringUtils.hasLength(t.getCheckNumber())) {
-                        writer.print( t.getCheckNumber() );
-                        writer.print(": ");
-                    }
+				writer.print( t.getPayee() );
+				writer.print(",");
+				writer.print( t.getCategory() );
+				writer.print(",");
+				this.printFloat( writer, t.getAmount() );
+				writer.print(",");
+				this.printString( writer, t.getType() );
+				writer.print(",");
+				this.printString( writer, t.getTransferOther() );
+				writer.print(",");
 
-                    writer.print( t.getPayee() );
-                    writer.print(",");
-                    writer.print( t.getCategory() );
-                    writer.print(",");
-                    this.printFloat( writer, t.getAmount() );
-                    writer.print(",");
-                    this.printString( writer, t.getType() );
-                    writer.print(",");
-                    this.printString( writer, t.getTransferOther() );
-                    writer.print(",");
+				if (!t.isSplit()) {
+					writer.print(t.isCleared() ? "Yes" : "No");
+				}
 
-                    if (!t.isSplit()) {
-                        writer.print(t.isCleared() ? "Yes" : "No");
-                    }
+				writer.print(",");
 
-                    writer.print(",");
+				if (StringUtils.hasLength(t.getMemo())) {
+					writer.print( "\"" + t.getMemo() + "\"" );
+				}
 
-                    if (StringUtils.hasLength(t.getMemo())) {
-                        writer.print( "\"" + t.getMemo() + "\"" );
-                    }
+				writer.println();
+				lineCount++;
+			}
 
-                    writer.println();
-                    lineCount++;
-                }
+			switch ( lineCount ) {
+				case 0:
+					this.printAccountId( writer, a );
+					writer.println(",,,,,,,");
 
-                switch ( lineCount ) {
-                    case 0:
-                        this.printAccountId( writer, a );
-                        writer.println(",,,,,,,");
+					// drop through
 
-                        // drop through
+				case 1:
+					this.printAccountBalance( writer, a );
+					writer.println(",,,,,,,");
+			}
 
-                    case 1:
-                        this.printAccountBalance( writer, a );
-                        writer.println(",,,,,,,");
-                }
+			writer.println();
+			writer.println();
+		}
 
-                writer.println();
-                writer.println();
-            }
+		writer.println("Summary");
 
-            writer.println("Summary");
+		categorySummaries.sort( Comparator.comparing(CategorySummary::getCategory) );
+		
+		final CategorySummary totalIncome = CategorySummary.builder()
+			.category( "Total Income" )
+			.build();
 
-            categorySummaries.sort(Comparator.comparing(CategorySummary::getCategory));
-
-            for (CategorySummary s : categorySummaries) {
-                if (StringUtils.hasLength(s.getCategory()) && !Transaction.SPLIT.equals(s.getCategory())) {
-                    writer.print(",");
-                    writer.print(",");
-                    writer.print( s.getCategory() );
-                    writer.print(",");
-                    this.printFloat( writer, s.getTotal() );
-                    writer.println();
-                }
-            }
-        }
+		final CategorySummary totalExpenses = CategorySummary.builder()
+			.category( "Total Expenses" )
+			.build();
+		
+		categorySummaries.forEach((cs) -> {
+			if (cs.isRootCategory()) {
+				if (cs.getTotal() < 0) {
+					totalExpenses.addToTotal(cs);
+				} else {
+					totalIncome.addToTotal(cs);
+				}
+			}
+		});
+		
+		categorySummaries.add(totalIncome);
+		categorySummaries.add(totalExpenses);
+			
+		for (CategorySummary cs : categorySummaries) {
+			if (cs.isValidCategory()) {
+				writer.print(",");
+				writer.print(",");
+				writer.print( cs.getCategory() );
+				writer.print(",");
+				this.printFloat( writer, cs.getTotal() );
+				writer.println();
+			}
+		}
+		
+		writer.flush();
     }
 
     private Collection<Transaction> getTransactionsForAccount(Account aAccount, List<Transaction> transactions) {

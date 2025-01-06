@@ -1,0 +1,10 @@
+Account,Status,Date,Name,Amount,Number,Comment,Category
+Barclays,Cleared,20/10/2024,M. Howard,100,,,Gift
+Barclays,Cleared,21/10/2024,Datalex,5034.04,,,Salary
+Barclays,Cleared,22/10/2024,Vodaphone,-25,,,Personal : Phone
+Barclays,Created,23/10/2024,Utility Warehouse,-105.86,Direct Debit,Gas,House : Bills
+Barclays,Created,23/10/2024,Utility Warehouse,-121.95,Direct Debit,Electric,House : Bills
+Barclays,Created,23/10/2024,Utility Warehouse,-45.94,Direct Debit,"Phone, broadband etc",House : Bills
+Barclays,Created,23/10/2024,Utility Warehouse,-32.69,Direct Debit,House insurance,House : Bills
+Barclays,Created,23/10/2024,Utility Warehouse,43.38,Direct Debit,,Refund
+

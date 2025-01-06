@@ -1,7 +1,10 @@
 package sw.accounts;
 
 import sw.accounts.exceptions.AccountsException;
-import sw.accounts.io.*;
+import sw.accounts.io.AccountsReader;
+import sw.accounts.io.AccountsWriter;
+import sw.accounts.io.SummaryReportWriter;
+import sw.accounts.io.TransactionsReader;
 import sw.accounts.models.Account;
 import sw.accounts.models.CategorySummary;
 import sw.accounts.models.Transaction;
@@ -12,8 +15,12 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.*;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
@@ -85,7 +92,9 @@ public class ReportGenerator {
 	}
 
 	public void generateSummaryReport(Path reportFile) throws AccountsException, IOException {
-		this.summaryReportWriter.writeReport( reportFile, this.getAccounts(), this.getTransactions(), this.getCategorySummaries() );
+		try (OutputStream out = Files.newOutputStream(reportFile)) {			
+			this.summaryReportWriter.writeReport( out, this.getAccounts(), this.getTransactions(), this.getCategorySummaries() );
+		}
 	}
 
 	private Account getAccount(String aName) throws AccountsException {
