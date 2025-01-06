@@ -16,8 +16,8 @@ import java.nio.file.Paths;
 import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
-public class AccountsReaderTest
-{
+public class AccountsReaderTest {
+	
 	private static final Account BARCLAYS_ACCOUNT = Account.builder()
 			.id("Barclays")
 			.defaultTransactionType("Visa")

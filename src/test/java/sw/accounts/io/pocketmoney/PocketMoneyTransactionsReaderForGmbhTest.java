@@ -1,6 +1,8 @@
 package sw.accounts.io.pocketmoney;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import sw.accounts.io.pocketmoney.csv.GmbhCsvReader;
 import sw.accounts.models.Transaction;

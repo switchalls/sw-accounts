@@ -19,11 +19,13 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
-public class ReportGeneratorTest
-{
+public class ReportGeneratorTest {
+	
 	private static final Account BARCLAYS_ACCOUNT = Account.builder()
 			.id("Barclays")
 			.defaultTransactionType("Visa")
